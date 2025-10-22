@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private bool OnGround() //Detecta se o jogador está no chão
     {
-        if (Physics.Raycast(transform.position, Vector3.down, 1.1f))
+        if (Physics.Raycast(transform.position, Vector3.down, 0.1f))
         {
             return true;
         }
