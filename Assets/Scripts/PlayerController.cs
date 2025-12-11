@@ -4,52 +4,43 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    //Variavéis
-    private Vector2 H_Move;
-    private float V_Move = 0f;
-    private float Gravity = -9.81f;
-    public float Speed = 5f;
+    //Componentes
+    private CharacterController Body;
+    private SphereCollider InteractArea;
 
+    //Variavéis e constantes
+    const float Speed = 17f;
+    public bool CanMove = true;
+    private Vector2 H_Input;
 
-    void Start() //Roda unica vez quando o jogo inicia
+    private void Start() //Aqui inicializamos as variáveis quando o jogo inicia
     {
-
+        Body = GetComponent<CharacterController>();
+        InteractArea = GetComponent<SphereCollider>();
     }
     
-    void Update() //Roda a cada frame do jogo
+    private void Update() //Aqui aplicamos os movimentos a cada frame do jogo
     {
-        //Movimentação Horizontal
-        H_Move.x = Input.GetAxisRaw("Horizontal");
-        H_Move.y = Input.GetAxisRaw("Vertical");
-
-        //Aplica gravidade
-        if (!OnGround())
-        {
-            V_Move += Gravity * Time.deltaTime;
-            Gravity += Gravity * Time.deltaTime;
-        }
-        else
-        {
-            V_Move = 0f;
-            if (Gravity != -9.81f)
-            {
-                Gravity = -9.81f;
-            }
-        }
-
-        //Aplica os movimentos
-        transform.Translate(new Vector3(H_Move.x, V_Move, H_Move.y) * Speed * Time.deltaTime);
+        Vector3 Movement = new Vector3(H_Input.x, 0f, H_Input.y) * Speed * Time.deltaTime; //Detecta os movimentos e aplica velocidade
+        
+        Body.Move(Movement); //Aplicamos todos os movimentos ao componente "CharacterController"
     }
 
-    private bool OnGround() //Detecta se o jogador está no chão
+    public void OnMove(InputAction.CallbackContext Context)//Aqui detectamos quando o jogador pressiona as teclas de andar
     {
-        if (Physics.Raycast(transform.position, Vector3.down, 0.1f))
+        if (Context.performed && CanMove)
         {
-            return true;
+            H_Input = Context.ReadValue<Vector2>();
+            H_Input = H_Input.normalized; //Evita que a velocidade do player multiplique quando anda nas diagonais
         }
         else
         {
-            return false;
+            H_Input = Vector2.zero; //Zera os inputs depois de não serem mais detectados
         }
+    }
+
+    private void OnTriggerEnter(Collider other) //Aqui detectamos colisões com o player
+    {
+        
     }
 }
