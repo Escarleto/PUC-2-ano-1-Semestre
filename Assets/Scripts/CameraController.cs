@@ -1,39 +1,49 @@
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
-    //Componentes
-    private PlayerController Player;
-    private Camera Cam;
+    public Transform Orientation;
+    private BinocularController Binoculars;
 
-    //Variavéis e Constantes
-    public float Sensitivity = 100f;
-    public float Limit = 90f;
+    public Vector2 OriginalSense = new Vector2(6f, 4.5f);
+    public Vector2 CurrentSense;
     private Vector2 LookInput;
+    private float RotationX;
+    private float RotationY;
 
-    private void Start() //Aqui inicializamos as variáveis quando o jogo inicia
+    private void Start() // Aqui inicializamos as variáveis quando o jogo inicia
     {
-        Player = GetComponentInParent<PlayerController>(); //Pega o componente do Player no pai deste objeto
-        Cam = GetComponent<Camera>(); //Pega o componente "Camera" anexado a este objeto
+        Binoculars = GetComponent<BinocularController>();
+        CurrentSense = OriginalSense;
+        Cursor.lockState = CursorLockMode.Locked; // Trava o cursor no centro da tela
+        Cursor.visible = false; // Esconde o cursor
     }
 
-    public void OnLook(InputAction.CallbackContext Context) //Detecta quando o mouse move
+    private void LateUpdate() //Aqui aplicamos os movimentos a cada frame do jogo
     {
-        if (Context.performed)
-        {
-            LookInput = Context.ReadValue<Vector2>(); //Adiciona os inputs a uma variavel
-        }
+        // Atualiza o campo de visão da câmera
+        float mouseX = LookInput.x * CurrentSense.x * Time.deltaTime;
+        float mouseY = LookInput.y * CurrentSense.y * Time.deltaTime;
+
+        // Rotaciona a câmera e a orientação do jogador com base no input do mouse
+        RotationY += mouseX;
+        RotationX -= mouseY;
+        RotationX = Mathf.Clamp(RotationX, -90f, 90f); // Limita a rotação vertical para evitar giros completos
+
+        // Aplica as rotações calculadas
+        transform.rotation = Quaternion.Euler(RotationX, RotationY, 0f);
+        Orientation.rotation = Quaternion.Euler(0f, RotationY, 0f);
     }
 
-    private void Update() //Aqui aplicamos os movimentos a cada frame do jogo
+    public void OnLook(InputAction.CallbackContext Context) // Aqui detectamos quando o jogador move o mouse ou o analógico direito
     {
-        Vector2 CamRotation = new Vector2(LookInput.x, LookInput.y) * Sensitivity * Time.deltaTime;
-        CamRotation.y = Mathf.Clamp(CamRotation.y, -Limit, Limit); //Limita até onde o player pode virar a camera verticalmente
+        LookInput = Context.ReadValue<Vector2>(); // Lê o valor do input de olhar
+    }
 
-        transform.localRotation = Quaternion.Euler(CamRotation.y, 0f, 0f); //Roda a camera verticalmente no proprio eixo
-        Player.transform.Rotate(Vector3.up * CamRotation.x); //Roda a camera e todo o Player horizontalmente
+    public void AjustSenstivity(float FOV) // Ajusta a sensibilidade com base no campo de visão atual
+    {
+        float fovRatio = FOV / Binoculars.OriginalFOV; // Calcula a proporção do campo de visão atual em relação ao original
+        CurrentSense = OriginalSense * fovRatio; // Ajusta a sensibilidade proporcionalmente
     }
 }
