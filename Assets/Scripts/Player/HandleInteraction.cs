@@ -26,10 +26,18 @@ public class HandleInteraction : MonoBehaviour
 
     public void TryInteract(InputAction.CallbackContext Context) // Aqui detectamos quando o jogador tenta interagir
     {
-        if (Context.performed && Interactable != null) // Se o input de interação foi realizado e há um objeto interagível na frente do jogador
+        if (!Context.performed) return;
+
+        if (DialogueSequencer.ActiveDialogue != null)
         {
-            Interactable.Interact(); // Chama o método Interact do objeto interagível
-            Interactable.HideInteractionUI(); // Esconde a UI de interação
+            DialogueSequencer.ActiveDialogue.AdvanceDialogue();
+            return;
+        }
+
+        if (Interactable != null)
+        {
+            Interactable.Interact();
+            Interactable.HideInteractionUI();
         }
     }
 }

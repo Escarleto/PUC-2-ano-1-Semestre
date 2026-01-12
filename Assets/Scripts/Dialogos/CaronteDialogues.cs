@@ -1,27 +1,30 @@
+using System.Collections;
 using UnityEngine;
 
 public class CaronteDialogues : MonoBehaviour, InteractableBase
 {
     private DialogueHandler dialogueHandler;
-    private SphereCollider InteractionCollider;
+    private bool isInteracting = false;
     public GameObject InteractUI;
+    public DialogueSequencer FirstSequence;
 
-    private void Start()
+    private void Start()  // Aqui inicializamos as variáveis quando o jogo inicia
     {
         dialogueHandler = GetComponentInChildren<DialogueHandler>();
-        InteractionCollider = GetComponent<SphereCollider>();
         HideInteractionUI();
     }
 
     public virtual void Interact() // Implementação do método Interact da interface
     {
-        dialogueHandler.PlayDialogue("Ai q dor nas costa to veio"); // Inicia o diálogo específico
-        InteractionCollider.enabled = false; // Desativa o collider após a interação
+        if (isInteracting) return; // Se já estiver interagindo, não faz nada
+        isInteracting = true;
+        FirstSequence.StartDialogue(); // Inicia a primeira sequência de diálogo
+        HideInteractionUI();
     }
 
     public virtual void ShowInteractionUI() // Implementação do método ShowInteractionUI da interface
     {
-        if (InteractUI.activeSelf) return;// Se a UI já estiver ativa, não faz nada
+        if (InteractUI.activeSelf || isInteracting == true) return;// Se a UI já estiver ativa, não faz nada
         InteractUI.SetActive(true);
     }
 
@@ -31,3 +34,4 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
         InteractUI.SetActive(false);
     }
 }
+

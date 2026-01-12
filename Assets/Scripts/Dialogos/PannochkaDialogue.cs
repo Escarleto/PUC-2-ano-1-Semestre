@@ -1,16 +1,17 @@
+using System.Collections;
 using UnityEngine;
 
 public class PannochkaDialogue : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private DialogueHandler dialogueHandler;
+
+    private void Start()  //Aqui inicializamos as variáveis quando o jogo inicia
     {
-        
+        dialogueHandler = GetComponent<DialogueHandler>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShortDialogue(string TextToSay)
     {
-        
+        dialogueHandler.PlayDialogue(TextToSay);
     }
 }

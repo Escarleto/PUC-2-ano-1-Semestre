@@ -3,6 +3,7 @@ using UnityEngine;
 public class BinocularsItem : MonoBehaviour, InteractableBase
 {
     public GameObject InteractUI;
+    public PannochkaDialogue pannochkaDialogue;
 
     private void Start()
     {
@@ -11,8 +12,9 @@ public class BinocularsItem : MonoBehaviour, InteractableBase
 
     public virtual void Interact()
     {
-        gameObject.SetActive(false); // Desativa os binóculos na cena
         Camera.main.GetComponent<BinocularController>().HasBinoculars = true; // Dá os binóculos ao jogador
+        pannochkaDialogue.ShortDialogue("Encontrei!"); // Inicia o diálogo da Pannochka
+        gameObject.SetActive(false);
         Destroy(gameObject); // Destroi o objeto dos binóculos ao interagir
     }
 
