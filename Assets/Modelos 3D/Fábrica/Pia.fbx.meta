@@ -3,7 +3,17 @@ guid: b67910ec640947a42ad8f767bb360c95
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pia
+    second: {fileID: 2100000, guid: 13f274770468ed449b32db7277156709, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pia
+    second: {fileID: 2800000, guid: 7c80f00b6a219be42a59f484366b521c, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
