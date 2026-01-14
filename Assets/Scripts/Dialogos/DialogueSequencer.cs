@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+using System;
 using static DialogueHandler;
 
 public class DialogueSequencer : MonoBehaviour
@@ -9,6 +9,7 @@ public class DialogueSequencer : MonoBehaviour
     private int CurrentText = 0;
     private DialogueHandler CurrentSpeaker;
     private bool dialogueActive = false;
+    public event Action OnDialogueEnded;
 
     public void StartDialogue()
     {
@@ -52,5 +53,6 @@ public class DialogueSequencer : MonoBehaviour
 
         foreach (var Line in dialogueLines)
             Line.Speaker.CleanDialogueBox();
+        OnDialogueEnded?.Invoke();
     }
 }

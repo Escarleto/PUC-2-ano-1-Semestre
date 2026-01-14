@@ -1,9 +1,9 @@
-using System.Collections;
 using UnityEngine;
 
 public class CaronteDialogues : MonoBehaviour, InteractableBase
 {
     private DialogueHandler dialogueHandler;
+    private SphereCollider InteractionCollider;
     public bool isInteracting = false;
     public GameObject InteractUI;
     public enum CaronteState{INTRO, ONSHIFT, ENDSHIFT}
@@ -15,9 +15,15 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
 
     private void Start()  // Aqui inicializamos as vari�veis quando o jogo inicia
     {
+        InteractionCollider = GetComponent<SphereCollider>();
         IntroDialogue = transform.Find("IntroDialogue").GetComponent<DialogueSequencer>();
         ShiftDialogue = transform.Find("ShiftDialogue").GetComponent<DialogueSequencer>();
         EndShiftDialogue = transform.Find("EndShiftDialogue").GetComponent<DialogueSequencer>();
+
+        IntroDialogue.OnDialogueEnded += OnDialogueFinished;
+        ShiftDialogue.OnDialogueEnded += OnDialogueFinished;
+        EndShiftDialogue.OnDialogueEnded += OnDialogueFinished;
+
         dialogueHandler = GetComponentInChildren<DialogueHandler>();
         HideInteractionUI();
     }
@@ -27,6 +33,7 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
         if (isInteracting) return; // Se j� estiver interagindo, n�o faz nada
         CheckState();
         isInteracting = true; // Inicia a primeira sequ�ncia de di�logo
+        InteractionCollider.enabled = false; // Desativa o collider de intera����o durante o di�logo
         HideInteractionUI();
     }
 
@@ -45,6 +52,12 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
                 EndShiftDialogue.StartDialogue();
                 break;
         }
+    }
+    private void OnDialogueFinished()
+    {
+        isInteracting = false;
+        InteractionCollider.enabled = true; // Reativa o collider de intera����o ap�s o di�logo
+        ShowInteractionUI();
     }
 
     public virtual void ShowInteractionUI() // Implementa��o do m�todo ShowInteractionUI da interface
