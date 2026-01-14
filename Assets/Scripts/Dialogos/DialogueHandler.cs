@@ -16,7 +16,6 @@ public class DialogueHandler : MonoBehaviour
         public string Line;
     }
 
-
     private void Awake() // Aqui inicializamos as variáveis quando o jogo inicia
     {
         TextComponent = GetComponentInChildren<TextMeshProUGUI>();
@@ -48,7 +47,6 @@ public class DialogueHandler : MonoBehaviour
         foreach (char Letter in TextToSay.ToCharArray()) // Percorre cada letra do texto a ser dito
         {
             TextComponent.text += Letter; // Adiciona a letra atual ao componente de texto
-            //Voice.Stop(); // Para o som da voz antes de tocar novamente
             Voice.pitch = Random.Range(0.9f, 1f); //Adiciona variação de pitch para o som da voz
             Voice.Play(); // Toca o som da voz para cada letra digitada
             yield return new WaitForSeconds(TypingSpeed); //Espera um curto período antes de adicionar a próxima letra

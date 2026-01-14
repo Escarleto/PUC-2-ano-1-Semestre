@@ -3,7 +3,17 @@ guid: 0dc105138af3c784a96076c4a3cc6506
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sanita
+    second: {fileID: 2100000, guid: 7817987c2f5235c4f9d7d00410ad989f, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Teste Sanita
+    second: {fileID: 2800000, guid: cf00b60474b2634459ee72dae0168518, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

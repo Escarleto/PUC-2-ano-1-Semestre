@@ -3,7 +3,27 @@ guid: 7081deca0fc07064dbe6d1d501da4fc0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cabine
+    second: {fileID: 2100000, guid: b507a1279a1e6544b89c7eecacd9b006, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CabinePorta
+    second: {fileID: 2100000, guid: 36175be1c22bdc84e935ac996dc23b54, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Cabine Frente
+    second: {fileID: 2800000, guid: 039c3b0e4902f8745b94d03a24bf812a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: CabineSides
+    second: {fileID: 2800000, guid: 606b2c3ce9463e84f8bcb4ee961dda4f, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

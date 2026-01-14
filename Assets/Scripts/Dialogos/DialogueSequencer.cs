@@ -15,6 +15,7 @@ public class DialogueSequencer : MonoBehaviour
         ActiveDialogue = this;
         dialogueActive = true;
         CurrentText = 0;
+        CurrentSpeaker = dialogueLines[CurrentText].Speaker;
         PlayCurrentLine();
     }
 
@@ -25,9 +26,9 @@ public class DialogueSequencer : MonoBehaviour
     }
 
     public void AdvanceDialogue()
-    {
+    { 
         if (!dialogueActive) return;
-
+        CurrentSpeaker.CleanDialogueBox();
         CurrentSpeaker = dialogueLines[CurrentText].Speaker;
 
         if (CurrentSpeaker.isTyping)

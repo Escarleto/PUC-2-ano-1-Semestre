@@ -27,6 +27,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: LightOff
+    second: {fileID: 2100000, guid: 056a409585c3d904cb6533b18fff4036, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LightOn
+    second: {fileID: 2100000, guid: 04c62d91d919d2f47a00005425a7726a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Lights
     second: {fileID: 2100000, guid: 8e128ec2d0d9d9942a5fad9f584809c7, type: 2}
   - first:
@@ -44,6 +54,36 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Wood
     second: {fileID: 2100000, guid: 320c92d2e9c807644bd03290c7456903, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: FloorPad
+    second: {fileID: 2800000, guid: 20a84e2b8540f1241ba28baab5b01760, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Grate
+    second: {fileID: 2800000, guid: c11db478b8cd73f4aa5a1830ca92264e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: GrateDoor
+    second: {fileID: 2800000, guid: 99ab497fdc9852a4bb184772ce8a5858, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pointer
+    second: {fileID: 2800000, guid: 695ae4ffee493c8419c0dc853192c95f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wallpaper
+    second: {fileID: 2800000, guid: e44ccfe45b3893b499b756450beb474c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2800000, guid: 169103ae159f80f44b588bd51a164607, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

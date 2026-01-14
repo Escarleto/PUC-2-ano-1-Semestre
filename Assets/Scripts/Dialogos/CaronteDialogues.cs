@@ -4,33 +4,58 @@ using UnityEngine;
 public class CaronteDialogues : MonoBehaviour, InteractableBase
 {
     private DialogueHandler dialogueHandler;
-    private bool isInteracting = false;
+    public bool isInteracting = false;
     public GameObject InteractUI;
-    public DialogueSequencer FirstSequence;
+    public enum CaronteState{INTRO, ONSHIFT, ENDSHIFT}
+    public CaronteState CurrentState = CaronteState.INTRO;
+    private DialogueSequencer IntroDialogue;
+    private DialogueSequencer ShiftDialogue;
+    private DialogueSequencer EndShiftDialogue;
+ 
 
-    private void Start()  // Aqui inicializamos as variáveis quando o jogo inicia
+    private void Start()  // Aqui inicializamos as variï¿½veis quando o jogo inicia
     {
+        IntroDialogue = transform.Find("IntroDialogue").GetComponent<DialogueSequencer>();
+        ShiftDialogue = transform.Find("ShiftDialogue").GetComponent<DialogueSequencer>();
+        EndShiftDialogue = transform.Find("EndShiftDialogue").GetComponent<DialogueSequencer>();
         dialogueHandler = GetComponentInChildren<DialogueHandler>();
         HideInteractionUI();
     }
 
-    public virtual void Interact() // Implementação do método Interact da interface
+    public virtual void Interact() // Implementaï¿½ï¿½o do mï¿½todo Interact da interface
     {
-        if (isInteracting) return; // Se já estiver interagindo, não faz nada
-        isInteracting = true;
-        FirstSequence.StartDialogue(); // Inicia a primeira sequência de diálogo
+        if (isInteracting) return; // Se jï¿½ estiver interagindo, nï¿½o faz nada
+        CheckState();
+        isInteracting = true; // Inicia a primeira sequï¿½ncia de diï¿½logo
         HideInteractionUI();
     }
 
-    public virtual void ShowInteractionUI() // Implementação do método ShowInteractionUI da interface
+    private void CheckState()
     {
-        if (InteractUI.activeSelf || isInteracting == true) return;// Se a UI já estiver ativa, não faz nada
+        switch (CurrentState)
+        {
+            case CaronteState.INTRO:
+                IntroDialogue.StartDialogue();
+                CurrentState = CaronteState.ONSHIFT;
+                break;
+            case CaronteState.ONSHIFT:
+                ShiftDialogue.StartDialogue();
+                break;
+            case CaronteState.ENDSHIFT:
+                EndShiftDialogue.StartDialogue();
+                break;
+        }
+    }
+
+    public virtual void ShowInteractionUI() // Implementaï¿½ï¿½o do mï¿½todo ShowInteractionUI da interface
+    {
+        if (InteractUI.activeSelf || isInteracting == true) return;// Se a UI jï¿½ estiver ativa, nï¿½o faz nada
         InteractUI.SetActive(true);
     }
 
-    public virtual void HideInteractionUI() // Implementação do método HideInteractionUI da interface
+    public virtual void HideInteractionUI() // Implementaï¿½ï¿½o do mï¿½todo HideInteractionUI da interface
     {
-        if (!InteractUI.activeSelf) return; // Se a UI já estiver desativada, não faz nada
+        if (!InteractUI.activeSelf) return; // Se a UI jï¿½ estiver desativada, nï¿½o faz nada
         InteractUI.SetActive(false);
     }
 }
