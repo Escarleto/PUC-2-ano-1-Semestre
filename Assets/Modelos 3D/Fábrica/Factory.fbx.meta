@@ -3,7 +3,77 @@ guid: 70f494cfed74d144887d8db2b8abdcb6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alphas
+    second: {fileID: 2100000, guid: ac726b5cadd69054b8c2dbd144fc1eb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Ch\xE3o"
+    second: {fileID: 2100000, guid: 0638afe3b5b66ef46acafbc67d82743d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Janelas
+    second: {fileID: 2100000, guid: 10cb43f97d0668643a8edca148bf0e7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 4b0f4cfce883c0c468d384f10f71edbb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paredes
+    second: {fileID: 2100000, guid: 279ecb8964bf8314e9cc63df4fe70875, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pilares
+    second: {fileID: 2100000, guid: 3a3ca10c003d4ec458a1b574b7c0e87a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tabuas
+    second: {fileID: 2100000, guid: 30671e0d063ca46429af0279b9340746, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Teto
+    second: {fileID: 2100000, guid: ecd5b87bb3371894a911e922670c0ddd, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: FactoryAlphas
+    second: {fileID: 2800000, guid: 55ca4cd63072d484fa13f16640063226, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: FactoryFloor
+    second: {fileID: 2800000, guid: dbd515b46d324694f9abed4992267f12, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "Maquin\xE1rioCentral"
+    second: {fileID: 2800000, guid: a06ee6754d6378845a766780d3949861, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: TetoFactory
+    second: {fileID: 2800000, guid: ff709283011446d4bb1dd5c959989ec1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Walls
+    second: {fileID: 2800000, guid: 3e47d753d908a5a4d927225892f5dfe0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Windows
+    second: {fileID: 2800000, guid: d879f4189af79c547b66c05a8684fef9, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

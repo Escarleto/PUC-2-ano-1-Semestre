@@ -3,7 +3,32 @@ guid: 5880a98f5d6947244b22f8fbdffca544
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Caixa Telefone
+    second: {fileID: 2100000, guid: 5460339ff59eeac4c847c5b3802752db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Telefone
+    second: {fileID: 2100000, guid: 61cab1b21f0420446b9aa302a5ab7f45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "TelefoneP\xE9s"
+    second: {fileID: 2100000, guid: 74a06df30b91f874facecb4aef141f26, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "TelefonePe\xE7a"
+    second: {fileID: 2800000, guid: 9a5e96d73bc214e43a035d34f1185ad6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: TelefoneSuporte
+    second: {fileID: 2800000, guid: 1cc2d9057291a954495aa54e774792d3, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

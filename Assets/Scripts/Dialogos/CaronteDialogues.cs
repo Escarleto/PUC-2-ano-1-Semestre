@@ -4,30 +4,72 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
 {
     private DialogueHandler dialogueHandler;
     private SphereCollider InteractionCollider;
+    public bool isInteracting = false;
     public GameObject InteractUI;
+    public enum CaronteState{INTRO, ONSHIFT, ENDSHIFT}
+    public CaronteState CurrentState = CaronteState.INTRO;
+    private DialogueSequencer IntroDialogue;
+    private DialogueSequencer ShiftDialogue;
+    private DialogueSequencer EndShiftDialogue;
+ 
 
-    private void Start()
+    private void Start()  // Aqui inicializamos as variï¿½veis quando o jogo inicia
     {
-        dialogueHandler = GetComponentInChildren<DialogueHandler>();
         InteractionCollider = GetComponent<SphereCollider>();
+        IntroDialogue = transform.Find("IntroDialogue").GetComponent<DialogueSequencer>();
+        ShiftDialogue = transform.Find("ShiftDialogue").GetComponent<DialogueSequencer>();
+        EndShiftDialogue = transform.Find("EndShiftDialogue").GetComponent<DialogueSequencer>();
+
+        IntroDialogue.OnDialogueEnded += OnDialogueFinished;
+        ShiftDialogue.OnDialogueEnded += OnDialogueFinished;
+        EndShiftDialogue.OnDialogueEnded += OnDialogueFinished;
+
+        dialogueHandler = GetComponentInChildren<DialogueHandler>();
         HideInteractionUI();
     }
 
-    public virtual void Interact() // Implementação do método Interact da interface
+    public virtual void Interact() // Implementaï¿½ï¿½o do mï¿½todo Interact da interface
     {
-        dialogueHandler.PlayDialogue("Ai q dor nas costa to veio"); // Inicia o diálogo específico
-        InteractionCollider.enabled = false; // Desativa o collider após a interação
+        if (isInteracting) return; // Se jï¿½ estiver interagindo, nï¿½o faz nada
+        CheckState();
+        isInteracting = true; // Inicia a primeira sequï¿½ncia de diï¿½logo
+        InteractionCollider.enabled = false; // Desativa o collider de interaï¿½ï¿½ï¿½ï¿½o durante o diï¿½logo
+        HideInteractionUI();
     }
 
-    public virtual void ShowInteractionUI() // Implementação do método ShowInteractionUI da interface
+    private void CheckState()
     {
-        if (InteractUI.activeSelf) return;// Se a UI já estiver ativa, não faz nada
+        switch (CurrentState)
+        {
+            case CaronteState.INTRO:
+                IntroDialogue.StartDialogue();
+                CurrentState = CaronteState.ONSHIFT;
+                break;
+            case CaronteState.ONSHIFT:
+                ShiftDialogue.StartDialogue();
+                break;
+            case CaronteState.ENDSHIFT:
+                EndShiftDialogue.StartDialogue();
+                break;
+        }
+    }
+    private void OnDialogueFinished()
+    {
+        isInteracting = false;
+        InteractionCollider.enabled = true; // Reativa o collider de interaï¿½ï¿½ï¿½ï¿½o apï¿½s o diï¿½logo
+        ShowInteractionUI();
+    }
+
+    public virtual void ShowInteractionUI() // Implementaï¿½ï¿½o do mï¿½todo ShowInteractionUI da interface
+    {
+        if (InteractUI.activeSelf || isInteracting == true) return;// Se a UI jï¿½ estiver ativa, nï¿½o faz nada
         InteractUI.SetActive(true);
     }
 
-    public virtual void HideInteractionUI() // Implementação do método HideInteractionUI da interface
+    public virtual void HideInteractionUI() // Implementaï¿½ï¿½o do mï¿½todo HideInteractionUI da interface
     {
-        if (!InteractUI.activeSelf) return; // Se a UI já estiver desativada, não faz nada
+        if (!InteractUI.activeSelf) return; // Se a UI jï¿½ estiver desativada, nï¿½o faz nada
         InteractUI.SetActive(false);
     }
 }
+
