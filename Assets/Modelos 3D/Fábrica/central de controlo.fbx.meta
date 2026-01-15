@@ -3,7 +3,17 @@ guid: 5a5548352cbb5864785730a242c48528
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 2df8b30bac01461449304c86fd1dab2b, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: CentralDeControlo
+    second: {fileID: 2800000, guid: a1dd553ff4ce23f4c926da83a4e71d40, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
