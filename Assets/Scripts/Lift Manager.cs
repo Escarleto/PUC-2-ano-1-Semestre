@@ -3,27 +3,38 @@ using UnityEngine;
 public class NewMonoBehaviourScript : MonoBehaviour
 {
     private BoxCollider LiftTrigger;
-    private bool IsPlayerOnLift = false;
+    private Animator LiftAnimator;
+    public enum Floor {SURFACE, HELL}
+    private Floor CurrentFloor = Floor.SURFACE;
+
 
     private void Start() //Aqui inicializamos as variáveis quando o jogo inicia
     {
         LiftTrigger = GetComponent<BoxCollider>();
+        LiftAnimator = GetComponent<Animator>();
         LiftTrigger.size = new Vector3(2.3f, 1.7f, 1.3f); // Define o comprimento do collider do elevador
     }
 
-    private void Update() //Aqui aplicamos as verificações a cada frame do jogo
+    private void ChangeFloor() //Aqui implementamos a lógica para mudar de andar
     {
-        if (!IsPlayerOnLift) return; // Sai do método se o jogador não estiver no elevador
-
-        // Lógica do elevador quando o jogador está dentro
-
+        switch (CurrentFloor)
+        {
+            case Floor.SURFACE:
+                LiftAnimator.SetTrigger("Descend");
+                CurrentFloor = Floor.HELL;
+                break;
+            case Floor.HELL:
+                LiftAnimator.SetTrigger("Ascend");
+                CurrentFloor = Floor.SURFACE;
+                break;
+        }
     }
 
     private void OnTriggerEnter(Collider other) //Aqui detectamos quando o jogador entra na área do elevador
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            IsPlayerOnLift = true; // Define o estado quando o jogador entra no elevador
+            ChangeFloor();
             LiftTrigger.size = new Vector3(2.3f, 1.7f, 4f);
             Debug.Log("Player entrou no elevador.");
         }
@@ -33,9 +44,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            IsPlayerOnLift = false; // Reseta o estado quando o jogador sai do elevador
             LiftTrigger.size = new Vector3(2.3f, 1.7f, 1.3f);
-            Debug.Log("Player saiu do elevador.");
         }
     }
 }

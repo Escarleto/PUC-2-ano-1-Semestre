@@ -22,6 +22,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Lamp
+    second: {fileID: 2100000, guid: dc66182a3837282468045c3de4ff38f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Lift Walls
     second: {fileID: 2100000, guid: 77ff444d29d9a5243b036650d32c6d4c, type: 2}
   - first:
@@ -58,32 +63,42 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: FloorPad
-    second: {fileID: 2800000, guid: 20a84e2b8540f1241ba28baab5b01760, type: 3}
+    second: {fileID: 2800000, guid: afceaeb4773776c4692b19e7784ecee1, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Grate
-    second: {fileID: 2800000, guid: c11db478b8cd73f4aa5a1830ca92264e, type: 3}
+    second: {fileID: 2800000, guid: 91472e2fbb984be42b75aa4a95b47b81, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: GrateDoor
-    second: {fileID: 2800000, guid: 99ab497fdc9852a4bb184772ce8a5858, type: 3}
+    second: {fileID: 2800000, guid: e5d9cb41f053c79479876327cca3392e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Lights
+    second: {fileID: 2800000, guid: 5e46d1cb1572cbd4794510d8976372be, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Metal frames
+    second: {fileID: 2800000, guid: 1dee94adf541a784c977efa432e571cb, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Pointer
-    second: {fileID: 2800000, guid: 695ae4ffee493c8419c0dc853192c95f, type: 3}
+    second: {fileID: 2800000, guid: 08be062999403294ca4fc1d084f578a2, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Wallpaper
-    second: {fileID: 2800000, guid: e44ccfe45b3893b499b756450beb474c, type: 3}
+    second: {fileID: 2800000, guid: a5c7b80d80988c243bfb73593f95f224, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Wood
-    second: {fileID: 2800000, guid: 169103ae159f80f44b588bd51a164607, type: 3}
+    second: {fileID: 2800000, guid: dbcf600d2e3424c46b089b288d72e033, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -101,7 +116,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 0
+    importConstraints: 1
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -109,7 +124,94 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Lift|CloseGrate
+      takeName: Lift|CloseGrate
+      internalID: 4256102890132418048
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Lift|Floors PadAction
+      takeName: Lift|Floors PadAction
+      internalID: 2283494897589012762
+      firstFrame: 0
+      lastFrame: 0
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Lift|CloseGrate (1)
+      takeName: Lift|CloseGrate
+      internalID: 753713196525572321
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
