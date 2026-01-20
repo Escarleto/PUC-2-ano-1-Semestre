@@ -47,7 +47,11 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
                 else CurrentState = CaronteState.NOBINOCULARS;
                 return;
             case CaronteState.NOBINOCULARS:
-                if (Camera.main.GetComponent<BinocularController>().HasBinoculars) CurrentState = CaronteState.HASBINOCULARS;
+                if (Camera.main.GetComponent<BinocularController>().HasBinoculars)
+                {
+                    CurrentState = CaronteState.HASBINOCULARS;
+                    return;
+                }       
                 Dialogues["NoBinocularsDialogue"].StartDialogue();
                 return;
             case CaronteState.HASBINOCULARS:

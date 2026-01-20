@@ -4800,8 +4800,7 @@ MonoBehaviour:
   - Speaker: {fileID: 2005476411}
     Line: Enfim
   - Speaker: {fileID: 2005476411}
-    Line: "Alguns dos mortos escaparam do inferno, o teu trabalho \xE9 identific\xE1-los
-      e traz\xEA-los devolta. S\xEA cuidadosa, n\xE3o confunda os disfarces.\r\n"
+    Line: Alguns dos mortos escaparam do inferno
   - Speaker: {fileID: 2005476411}
     Line: "O teu trabalho \xE9 identific\xE1-los e traz\xEA-los devolta\r\n"
   - Speaker: {fileID: 2005476411}
@@ -6764,12 +6763,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232070207}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.009999995, y: 0.009999997, z: 0.009999997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1301485837}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1240956565
 GameObject:
@@ -7594,7 +7593,6 @@ Transform:
   - {fileID: 1494170750}
   - {fileID: 7129410}
   - {fileID: 1467177014}
-  - {fileID: 1232070210}
   - {fileID: 1573993168}
   - {fileID: 1256953771}
   - {fileID: 2131845581}
@@ -12548,6 +12546,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1077132790}
+  - {fileID: 1232070210}
   - {fileID: 1220324084}
   - {fileID: 40645247}
   - {fileID: 1246099784}
