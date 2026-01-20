@@ -3,7 +3,27 @@ guid: 9731ab40066442e4c8819aa0177d4967
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Porta
+    second: {fileID: 2100000, guid: a23b1151d81654148b40f4bcf62c9289, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Porta 2
+    second: {fileID: 2100000, guid: 0ddc433c8a7d1594a920ced3cb91eb96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Porta 2.001
+    second: {fileID: 2100000, guid: 4b7fae0279d3eee47bb208f862e3a5d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Portinhola
+    second: {fileID: 2100000, guid: 0b885c64cbfa0aa4bb3d7b19ded5f15c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

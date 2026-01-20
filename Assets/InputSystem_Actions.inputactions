@@ -50,6 +50,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "ae2fb3af-640c-4a77-821c-f7a478411895",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -259,6 +268,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "91657e46-dd5b-4193-86e8-7005fdc07232",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

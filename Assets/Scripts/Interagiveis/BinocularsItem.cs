@@ -13,7 +13,7 @@ public class BinocularsItem : MonoBehaviour, InteractableBase
     public virtual void Interact()
     {
         Camera.main.GetComponent<BinocularController>().HasBinoculars = true; // Dá os binóculos ao jogador
-        pannochkaDialogue.ShortDialogue("Encontrei!"); // Inicia o diálogo da Pannochka
+        pannochkaDialogue.BarkDialogue("Encontrei");
         gameObject.SetActive(false);
         Destroy(gameObject); // Destroi o objeto dos binóculos ao interagir
     }

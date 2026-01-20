@@ -3,7 +3,17 @@ guid: dd3b8e1b06429fb40a71a510e1dd80d0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 0586532823dbc6e439fd50810d0f82f4, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "Bin\xF3culos"
+    second: {fileID: 2800000, guid: 5ffd18234b6794c4c8021a082a79f1a2, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

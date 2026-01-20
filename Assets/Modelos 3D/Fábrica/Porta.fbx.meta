@@ -3,7 +3,27 @@ guid: 887b9ddfe00b66a45b59795c8a7e90d1
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Ma\xE7aneta"
+    second: {fileID: 2100000, guid: 2d2904efc9153344fb94b7b689ecef68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Porta Frame
+    second: {fileID: 2100000, guid: d2b6dc2918dad1749b47628a393b23e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Porta em si
+    second: {fileID: 2100000, guid: 7ae4ffff4cb08dd479770b1817d10533, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WC Sign
+    second: {fileID: 2100000, guid: dd902642a40944945bccf978724267ca, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -4,40 +4,48 @@ using static DialogueHandler;
 
 public class DialogueSequencer : MonoBehaviour
 {
-    public DialogueLine[] dialogueLines;
+    private PlayerController Player;
+    public DialogueLine[] DialogueLines;
     public static DialogueSequencer ActiveDialogue;
     private int CurrentText = 0;
     private DialogueHandler CurrentSpeaker;
-    private bool dialogueActive = false;
+    private bool onDialogue = false;
     public event Action OnDialogueEnded;
+
+    private void Start()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
 
     public void StartDialogue()
     {
         ActiveDialogue = this;
-        dialogueActive = true;
+        onDialogue = true;
+        Player.CanMove = false;
         CurrentText = 0;
-        CurrentSpeaker = dialogueLines[CurrentText].Speaker;
+        CurrentSpeaker = DialogueLines[CurrentText].Speaker;
         PlayCurrentLine();
     }
 
-    void PlayCurrentLine()
+    private void PlayCurrentLine()
     {
-        DialogueLine Line = dialogueLines[CurrentText];
+        CurrentSpeaker.CleanDialogueBox();
+        DialogueLine Line = DialogueLines[CurrentText];
         Line.Speaker.PlayDialogue(Line.Line);
     }
 
     public void AdvanceDialogue()
     { 
-        if (!dialogueActive) return;
-        CurrentSpeaker.CleanDialogueBox();
-        CurrentSpeaker = dialogueLines[CurrentText].Speaker;
+        if (!onDialogue) return;
+
+        CurrentSpeaker = DialogueLines[CurrentText].Speaker;
 
         if (CurrentSpeaker.isTyping)
             return;
 
         CurrentText++;
 
-        if (CurrentText >= dialogueLines.Length)
+        if (CurrentText >= DialogueLines.Length)
         {
             EndDialogue();
             return;
@@ -48,10 +56,11 @@ public class DialogueSequencer : MonoBehaviour
 
     private void EndDialogue()
     {
-        dialogueActive = false;
+        onDialogue = false;
         ActiveDialogue = null;
 
-        foreach (var Line in dialogueLines)
+        Player.CanMove = true;
+        foreach (var Line in DialogueLines)
             Line.Speaker.CleanDialogueBox();
         OnDialogueEnded?.Invoke();
     }

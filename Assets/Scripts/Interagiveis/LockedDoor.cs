@@ -15,9 +15,8 @@ public class LockedDoor : MonoBehaviour, InteractableBase
 
     public virtual void Interact()
     {
-        pannochkaDialogue.ShortDialogue(TextToSay); // Inicia o diálogo da Pannochka
+        pannochkaDialogue.BarkDialogue(TextToSay); // Inicia o diálogo da Pannochka
         HideInteractionUI();
-        InteractableArea.enabled = false; // Desativa a área de interação para evitar múltiplas interações
     }
 
     public virtual void ShowInteractionUI() // Implementação do método ShowInteractionUI da interface

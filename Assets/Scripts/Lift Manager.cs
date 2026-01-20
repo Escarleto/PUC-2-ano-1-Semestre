@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class LiftManager : MonoBehaviour
 {
     private BoxCollider LiftTrigger;
+    public BoxCollider DoorCollision;
     private Animator LiftAnimator;
     public enum Floor {SURFACE, HELL}
     private Floor CurrentFloor = Floor.SURFACE;
@@ -12,7 +13,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         LiftTrigger = GetComponent<BoxCollider>();
         LiftAnimator = GetComponent<Animator>();
-        LiftTrigger.size = new Vector3(2.3f, 1.7f, 1.3f); // Define o comprimento do collider do elevador
+        LiftTrigger.size = new Vector3(3.11f, 1f, 0.95f); // Define o comprimento do collider do elevador
     }
 
     private void ChangeFloor() //Aqui implementamos a lógica para mudar de andar
@@ -30,13 +31,25 @@ public class NewMonoBehaviourScript : MonoBehaviour
         }
     }
 
+    private void OpenDoors() //Aqui abrimos as portas do elevador
+    {
+        LiftAnimator.SetTrigger("OpenGate");
+        LiftAnimator.GetBehaviour<DisableCollision>().DoorCollision = DoorCollision;
+    }
+
+    private void CloseDoors() //Aqui fechamos as portas do elevador
+    {
+        LiftAnimator.SetTrigger("CloseGate");
+        LiftAnimator.GetBehaviour<EnableCollision>().DoorCollision = DoorCollision;
+    }
+
     private void OnTriggerEnter(Collider other) //Aqui detectamos quando o jogador entra na área do elevador
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            LiftTrigger.size = new Vector3(3.11f, 1f, 5f);
+            CloseDoors();
             ChangeFloor();
-            LiftTrigger.size = new Vector3(2.3f, 1.7f, 4f);
-            Debug.Log("Player entrou no elevador.");
         }
     }
 
@@ -44,7 +57,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            LiftTrigger.size = new Vector3(2.3f, 1.7f, 1.3f);
+            LiftTrigger.size = new Vector3(3.11f, 1f, 0.95f);
+            CloseDoors();
         }
     }
 }

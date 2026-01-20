@@ -11,6 +11,7 @@ public class BinocularController : MonoBehaviour
     private float CurrentFOV;
     private bool inBinoculars = false;
     public bool HasBinoculars = false;
+    public LayerMask InteractableLayer;
 
     private void Start() // Aqui inicializamos as variáveis quando o jogo inicia
     {
@@ -38,5 +39,19 @@ public class BinocularController : MonoBehaviour
         CurrentFOV = Mathf.Clamp(CurrentFOV, 5f, OriginalFOV - 10f); // Limita o campo de visão entre o original e o máximo de zoom
         Cam.fieldOfView = CurrentFOV; // Aplica o campo de visão ajustado à câmera
         CamController.AjustSenstivity(CurrentFOV); // Ajusta a sensibilidade com base no nível de zoom
+    }
+
+    public void TryShoot(InputAction.CallbackContext Context)
+    {
+        if (!Context.performed || !inBinoculars) return;
+        Ray ShootRange = new Ray(transform.position, transform.forward);
+
+        if (Physics.Raycast(ShootRange, out RaycastHit HitInfo, 500f, InteractableLayer))
+        {
+            if (HitInfo.collider.TryGetComponent<AccusablePerson>(out AccusablePerson Accusable))
+            {
+                Accusable.Shot();
+            }
+        }
     }
 }

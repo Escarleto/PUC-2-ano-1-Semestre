@@ -1,30 +1,30 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class CaronteDialogues : MonoBehaviour, InteractableBase
 {
-    private DialogueHandler dialogueHandler;
     private SphereCollider InteractionCollider;
     public bool isInteracting = false;
     public GameObject InteractUI;
-    public enum CaronteState{INTRO, ONSHIFT, ENDSHIFT}
+    public enum CaronteState{INTRO, NOBINOCULARS, HASBINOCULARS, ONSHIFT, ENDSHIFT}
     public CaronteState CurrentState = CaronteState.INTRO;
-    private DialogueSequencer IntroDialogue;
-    private DialogueSequencer ShiftDialogue;
-    private DialogueSequencer EndShiftDialogue;
- 
+    private Dictionary<string, DialogueSequencer> Dialogues;
 
-    private void Start()  // Aqui inicializamos as vari�veis quando o jogo inicia
+
+    private void Start()  // Aqui inicializamos as variáveis quando o jogo inicia
     {
         InteractionCollider = GetComponent<SphereCollider>();
-        IntroDialogue = transform.Find("IntroDialogue").GetComponent<DialogueSequencer>();
-        ShiftDialogue = transform.Find("ShiftDialogue").GetComponent<DialogueSequencer>();
-        EndShiftDialogue = transform.Find("EndShiftDialogue").GetComponent<DialogueSequencer>();
 
-        IntroDialogue.OnDialogueEnded += OnDialogueFinished;
-        ShiftDialogue.OnDialogueEnded += OnDialogueFinished;
-        EndShiftDialogue.OnDialogueEnded += OnDialogueFinished;
+        Dialogues = new Dictionary<string, DialogueSequencer>();
 
-        dialogueHandler = GetComponentInChildren<DialogueHandler>();
+        DialogueSequencer[] Sequences = GetComponentsInChildren<DialogueSequencer>(true);
+
+        foreach (DialogueSequencer Sequence in Sequences)
+        {
+            Dialogues.Add(Sequence.name, Sequence);
+            Sequence.OnDialogueEnded += OnDialogueFinished;
+        }
+
         HideInteractionUI();
     }
 
@@ -42,25 +42,37 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
         switch (CurrentState)
         {
             case CaronteState.INTRO:
-                IntroDialogue.StartDialogue();
+                Dialogues["IntroDialogue"].StartDialogue();
+                if (Camera.main.GetComponent<BinocularController>().HasBinoculars) CurrentState = CaronteState.HASBINOCULARS;
+                else CurrentState = CaronteState.NOBINOCULARS;
+                return;
+            case CaronteState.NOBINOCULARS:
+                if (Camera.main.GetComponent<BinocularController>().HasBinoculars) CurrentState = CaronteState.HASBINOCULARS;
+                Dialogues["NoBinocularsDialogue"].StartDialogue();
+                return;
+            case CaronteState.HASBINOCULARS:
+                Dialogues["HasBinocularsDialogue"].StartDialogue();
                 CurrentState = CaronteState.ONSHIFT;
-                break;
+                return;
             case CaronteState.ONSHIFT:
-                ShiftDialogue.StartDialogue();
-                break;
+                Dialogues["ShiftDialogue"].StartDialogue();
+                return;
             case CaronteState.ENDSHIFT:
-                EndShiftDialogue.StartDialogue();
-                break;
+                Dialogues["EndShiftDialogue"].StartDialogue();
+                return;
+            default:
+                Debug.LogWarning("Caronte está em um estado inválido.");
+                return;
         }
     }
     private void OnDialogueFinished()
     {
         isInteracting = false;
-        InteractionCollider.enabled = true; // Reativa o collider de intera����o ap�s o di�logo
+        InteractionCollider.enabled = true; // Reativa o collider de interação após o diálogo
         ShowInteractionUI();
     }
 
-    public virtual void ShowInteractionUI() // Implementa��o do m�todo ShowInteractionUI da interface
+    public virtual void ShowInteractionUI() // Implementação do método ShowInteractionUI da interface
     {
         if (InteractUI.activeSelf || isInteracting == true) return;// Se a UI j� estiver ativa, n�o faz nada
         InteractUI.SetActive(true);

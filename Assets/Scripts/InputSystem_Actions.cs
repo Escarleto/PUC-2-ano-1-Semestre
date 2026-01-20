@@ -136,6 +136,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""ae2fb3af-640c-4a77-821c-f7a478411895"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -345,6 +354,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91657e46-dd5b-4193-86e8-7005fdc07232"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -937,6 +957,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Binoculars = m_Player.FindAction("Binoculars", throwIfNotFound: true);
         m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
+        m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1035,6 +1056,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Binoculars;
     private readonly InputAction m_Player_Zoom;
+    private readonly InputAction m_Player_Shoot;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1066,6 +1088,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Zoom".
         /// </summary>
         public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Shoot".
+        /// </summary>
+        public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1107,6 +1133,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Zoom.started += instance.OnZoom;
             @Zoom.performed += instance.OnZoom;
             @Zoom.canceled += instance.OnZoom;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
         }
 
         /// <summary>
@@ -1133,6 +1162,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Zoom.started -= instance.OnZoom;
             @Zoom.performed -= instance.OnZoom;
             @Zoom.canceled -= instance.OnZoom;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
         }
 
         /// <summary>
@@ -1468,6 +1500,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnZoom(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Shoot" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnShoot(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

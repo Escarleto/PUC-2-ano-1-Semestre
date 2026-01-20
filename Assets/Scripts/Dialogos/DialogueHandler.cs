@@ -31,18 +31,17 @@ public class DialogueHandler : MonoBehaviour
 
     public void PlayDialogue(string TextToSay) // Aqui iniciamos o efeito de digitação
     {
-        if (TextComponent == null) return; // Verifica se o componente de texto está corretamente atribuído
+        if (TextComponent == null || isTyping == true) return; // Se o componente de texto não estiver atribuído ou já estiver digitando, não faz nada
 
         StopAllCoroutines(); // Para qualquer efeito de digitação que esteja em andamento
         CleanDialogueBox(); // Limpa a caixa de diálogo antes de iniciar um novo efeito
         StartCoroutine(TypeText(TextToSay));
     }
 
-
     private IEnumerator TypeText(string TextToSay) // Aqui aplicamos o efeito de digitação
     {
         isTyping = true;
-        float TypingSpeed = 0.12f; // Define a velocidade padrão de digitação
+        float TypingSpeed = 0.1f; // Define a velocidade padrão de digitação
         
         foreach (char Letter in TextToSay.ToCharArray()) // Percorre cada letra do texto a ser dito
         {

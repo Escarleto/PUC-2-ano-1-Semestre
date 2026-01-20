@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext Context)//Aqui detectamos quando o jogador pressiona as teclas de andar
     {  
-        if (Context.performed && CanMove)
+        if (Context.performed && CanMove == true)
         {
             H_Input = Context.ReadValue<Vector2>();
 
