@@ -2,16 +2,12 @@
 
 public class AccusablePerson : MonoBehaviour
 {
-    private GameObject ShootUI;
     private enum State {HUMAN, DEAD}
     private State Is;
 
     void Start()
     {
-        ShootUI = transform.GetChild(0).gameObject;
-        ShootUI.SetActive(false);
-        if (gameObject.tag == "Dead") Is = State.DEAD;
-        else if (gameObject.tag == "Human") Is = State.HUMAN;
+        ChooseDead();
     }
 
     public void Shot()
@@ -24,6 +20,29 @@ public class AccusablePerson : MonoBehaviour
             case State.DEAD:
                 Dead();
                 return;
+            default:
+                Debug.LogError("Estado desconhecido");
+                return;
+        }
+    }
+    
+    private void ChooseDead()
+    {
+        float Chance = Random.Range(0f, 1f);
+        if (Chance <= 0.75f)
+        {
+            Is = State.HUMAN;
+            return;
+        }
+        else
+        {
+            if(Manager.Instance.TotalDeadPeople >= 10)
+            {
+                Is = State.HUMAN;
+                return;
+            }
+            Is = State.DEAD;
+            Manager.Instance.TotalDeadPeople += 1;
         }
     }
 

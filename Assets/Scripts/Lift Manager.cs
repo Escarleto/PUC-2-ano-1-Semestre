@@ -5,15 +5,16 @@ public class LiftManager : MonoBehaviour
     private BoxCollider LiftTrigger;
     public BoxCollider DoorCollision;
     private Animator LiftAnimator;
+    public bool OpenDoorOnStart;
     public enum Floor {SURFACE, HELL}
     private Floor CurrentFloor = Floor.SURFACE;
-
 
     private void Start() //Aqui inicializamos as variáveis quando o jogo inicia
     {
         LiftTrigger = GetComponent<BoxCollider>();
         LiftAnimator = GetComponent<Animator>();
         LiftTrigger.size = new Vector3(3.11f, 1f, 0.95f); // Define o comprimento do collider do elevador
+        if (OpenDoorOnStart) OpenDoors();
     }
 
     private void ChangeFloor() //Aqui implementamos a lógica para mudar de andar

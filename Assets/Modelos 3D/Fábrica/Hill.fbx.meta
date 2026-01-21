@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 2811d106808c5d8448a09c890efd49fc
+guid: 24cd1eacc25cbf244be283c0c15251b6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "bal\xE3o"
-    second: {fileID: 2100000, guid: 54eb332a0ae6d4b41baf1e76ebbd7a8d, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

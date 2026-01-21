@@ -11,7 +11,7 @@ public class HandleInteraction : MonoBehaviour
     {
         InteractRay = new Ray(transform.position, transform.forward); // Cria um raio a partir da posição da câmera na direção que ela está olhando
 
-        if (!Physics.Raycast(InteractRay, out RaycastHit HitInfo, 1f, InteractableLayer)) // Filtra os objetos não interagiveis
+        if (!Physics.Raycast(InteractRay, out RaycastHit HitInfo, 1.7f, InteractableLayer)) // Filtra os objetos não interagiveis
         {
             if (Interactable != null) Interactable.HideInteractionUI(); // Se não houver objeto interagível, esconde a UI de interação
             Interactable = null;

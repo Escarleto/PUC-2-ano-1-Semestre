@@ -4,6 +4,7 @@ public class Manager : MonoBehaviour
 {
     public static Manager Instance;
 
+    public int TotalDeadPeople = 0;
     private float Salario;
 
     private void Awake()

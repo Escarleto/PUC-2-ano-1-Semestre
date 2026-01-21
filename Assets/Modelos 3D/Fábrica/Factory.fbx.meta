@@ -45,35 +45,50 @@ ModelImporter:
       name: Teto
     second: {fileID: 2100000, guid: ecd5b87bb3371894a911e922670c0ddd, type: 2}
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VolumetricLight
+    second: {fileID: 2100000, guid: a9e00e54d0827bf4497e556fbca94e8f, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: FactoryAlphas
-    second: {fileID: 2800000, guid: 55ca4cd63072d484fa13f16640063226, type: 3}
+    second: {fileID: 2800000, guid: c2a56bc8e13ab2b4ca4e1804cecfe331, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: FactoryFloor
-    second: {fileID: 2800000, guid: dbd515b46d324694f9abed4992267f12, type: 3}
+    second: {fileID: 2800000, guid: cbe20f3a5fe37274bb7c75b5a462b8ea, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: "Maquin\xE1rioCentral"
-    second: {fileID: 2800000, guid: a06ee6754d6378845a766780d3949861, type: 3}
+    second: {fileID: 2800000, guid: 1754d8643afcb07459c484b4000f181b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pilares
+    second: {fileID: 2800000, guid: 49325f4bc4a198947ac02827e010bb00, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Planks
+    second: {fileID: 2800000, guid: 20dd63b0481a5c04aaf21b32129db28e, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: TetoFactory
-    second: {fileID: 2800000, guid: ff709283011446d4bb1dd5c959989ec1, type: 3}
+    second: {fileID: 2800000, guid: b77169a674bb407458d3b8cba71ac4a8, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Walls
-    second: {fileID: 2800000, guid: 3e47d753d908a5a4d927225892f5dfe0, type: 3}
+    second: {fileID: 2800000, guid: efe25e34214ee2b4199c2debd3b8be33, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Windows
-    second: {fileID: 2800000, guid: d879f4189af79c547b66c05a8684fef9, type: 3}
+    second: {fileID: 2800000, guid: 669a1db18beb6de4aa2cc9d9b025da35, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

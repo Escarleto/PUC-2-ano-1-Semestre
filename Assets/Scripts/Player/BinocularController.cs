@@ -11,6 +11,7 @@ public class BinocularController : MonoBehaviour
     private float CurrentFOV;
     private bool inBinoculars = false;
     public bool HasBinoculars = false;
+    public GameObject Crosshair;
     public LayerMask InteractableLayer;
 
     private void Start() // Aqui inicializamos as variáveis quando o jogo inicia
@@ -18,12 +19,14 @@ public class BinocularController : MonoBehaviour
         CurrentFOV = OriginalFOV;
         Cam = GetComponent<Camera>(); // Pega a câmera principal
         CamController = GetComponent<CameraController>(); // Pega o componente CameraController
+        Crosshair.SetActive(false); // Desativa a mira inicialmente
     }
 
     public void OnBinoculars(InputAction.CallbackContext Context) // Aqui detectamos quando o jogador ativa ou desativa os binóculos
     {
         if (Context.performed && HasBinoculars == true) inBinoculars = !inBinoculars; // Alterna o estado dos binóculos
 
+        Crosshair.SetActive(inBinoculars); // Ativa ou desativa a mira com base no estado dos binóculos
         float targetFOV = inBinoculars ? OriginalFOV / 2f : OriginalFOV; // Define o campo de visão alvo com base no estado dos binóculos
         Cam.DOFieldOfView(targetFOV, 1f).SetEase(Ease.InOutSine); // Anima a transição do campo de visão usando DOTween
         CamController.AjustSenstivity(targetFOV); // Ajusta a sensibilidade com base no novo campo de visão
