@@ -7,6 +7,7 @@ public class DialogueHandler : MonoBehaviour
     private TextMeshProUGUI TextComponent;
     private AudioSource Voice;
     public bool isTyping = false;
+    private float TypingSpeed = 0.075f;
 
     [System.Serializable]
     public class DialogueLine
@@ -41,7 +42,6 @@ public class DialogueHandler : MonoBehaviour
     private IEnumerator TypeText(string TextToSay) // Aqui aplicamos o efeito de digitação
     {
         isTyping = true;
-        float TypingSpeed = 0.1f; // Define a velocidade padrão de digitação
         
         foreach (char Letter in TextToSay.ToCharArray()) // Percorre cada letra do texto a ser dito
         {

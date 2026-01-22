@@ -3,7 +3,52 @@ guid: af87c91b0e03d1d438ff452f37bb37ab
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cercados
+    second: {fileID: 2100000, guid: bc727aa1934868343b56d008cfbce7a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grama
+    second: {fileID: 2100000, guid: 98f343ce5a98142469f2d1595b078e0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Piso
+    second: {fileID: 2100000, guid: c69cd6b0aa2b22f41a7213b66e9edd35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Predios
+    second: {fileID: 2100000, guid: ee760d97dae964547bdadf7d32d7a5e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rua
+    second: {fileID: 2100000, guid: 752ddc6804447d64bbc77c6cf1cd8411, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Fences
+    second: {fileID: 2800000, guid: a3d2c7fa871335f479831fd96bb08050, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Grama
+    second: {fileID: 2800000, guid: 1e7f8c07aa096e2418d9764818cfd5cf, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Piso
+    second: {fileID: 2800000, guid: 993ff835108d31241aa809d01ac4c2b9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Rua
+    second: {fileID: 2800000, guid: c4de214209c58b848b9a24939be9636b, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
