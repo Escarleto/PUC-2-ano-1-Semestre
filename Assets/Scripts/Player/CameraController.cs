@@ -17,8 +17,6 @@ public class CameraController : MonoBehaviour
     {
         Binoculars = GetComponent<BinocularController>();
         CurrentSense = OriginalSense;
-        Cursor.lockState = CursorLockMode.Locked; // Trava o cursor no centro da tela
-        Cursor.visible = false; // Esconde o cursor
     }
 
     private void Update() //Aqui aplicamos os movimentos a cada frame do jogo
@@ -30,7 +28,7 @@ public class CameraController : MonoBehaviour
         // Rotaciona a câmera e a orientação do jogador com base no input do mouse
         RotationY += mouseX;
         RotationX -= mouseY;
-        RotationX = Mathf.Clamp(RotationX, -75f, 75f); // Limita a rotação vertical para evitar giros completos
+        RotationX = Mathf.Clamp(RotationX, -75f, 65f); // Limita a rotação vertical para evitar giros completos
 
         // Aplica as rotações calculadas
         Orientation.rotation = Quaternion.Euler(0f, RotationY, 0f);

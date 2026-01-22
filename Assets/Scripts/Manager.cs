@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Manager : MonoBehaviour
@@ -6,6 +7,8 @@ public class Manager : MonoBehaviour
 
     public int TotalDeadPeople = 0;
     private float Salario;
+
+    public CaronteDialogues Caronte;
 
     private void Awake()
     {
@@ -27,19 +30,28 @@ public class Manager : MonoBehaviour
         Debug.Log("Salario Atual: " + Salario);
     }
 
-    public void SubtractSalario(float valor)
+    public void ChangeSalario(float ChangeTo)
     {
-        Salario -= valor;
+        Salario += ChangeTo;
         Debug.Log("Salario Atual: " + Salario);
     }
 
     public void StartShift()
     {
         Debug.Log("Shift Started");
+        Caronte.CurrentState = CaronteDialogues.CaronteState.ONSHIFT;
+        StartCoroutine(ShiftDuration());
     }
 
     public void EndShift()
     {
         Debug.Log("Shift Ended");
+        Caronte.CurrentState = CaronteDialogues.CaronteState.ENDSHIFT;
+    }
+
+    private IEnumerator ShiftDuration()
+    {
+        yield return new WaitForSeconds(5);
+        EndShift();
     }
 }

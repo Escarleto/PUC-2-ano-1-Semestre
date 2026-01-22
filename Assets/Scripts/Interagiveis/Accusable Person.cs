@@ -2,13 +2,10 @@
 
 public class AccusablePerson : MonoBehaviour
 {
-    private enum State {HUMAN, DEAD}
+    private enum State { HUMAN, DEAD }
     private State Is;
 
-    void Start()
-    {
-        ChooseDead();
-    }
+    private void Start() { ChooseDead(); }
 
     public void Shot()
     {
@@ -48,13 +45,12 @@ public class AccusablePerson : MonoBehaviour
 
     private void Human()
     {
-        Debug.Log("Interagiu com pessoa viva");
-        Manager.Instance.SubtractSalario(35.75f);
+        Manager.Instance.ChangeSalario(-35.75f);
     }
 
     private void Dead()
     {
-        Manager.Instance.AddSalario(30.50f);
+        Manager.Instance.ChangeSalario(30.50f);
         Destroy(gameObject);
     }
 }

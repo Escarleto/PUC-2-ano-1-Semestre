@@ -16,11 +16,8 @@ public class ManageLightIntensity : MonoBehaviour
     private void Update() 
     {
         float Distance = Vector3.Distance(transform.position, Player.transform.position);
+        float t = Mathf.InverseLerp(4f, 18f, Distance); // Normaliza a distância entre 0 e 1
 
-        // Normaliza a distância entre 0 e 1
-        float t = Mathf.InverseLerp(4f, 18f, Distance);
-
-        // Inverte (perto = menos luz, longe = mais luz)
-        LightSource.intensity = Mathf.Lerp(0f, InitialIntensity, t);
+        LightSource.intensity = Mathf.Lerp(0f, InitialIntensity, t); // Inverte (perto = menos luz, longe = mais luz)
     }
 }

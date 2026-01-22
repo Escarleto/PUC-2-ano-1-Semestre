@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class CaronteDialogues : MonoBehaviour, InteractableBase
 {
     private SphereCollider InteractionCollider;
+    public LiftManager Lift;
     public bool isInteracting = false;
     public GameObject InteractUI;
     public enum CaronteState{INTRO, NOBINOCULARS, HASBINOCULARS, ONSHIFT, ENDSHIFT}
@@ -28,12 +29,12 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
         HideInteractionUI();
     }
 
-    public virtual void Interact() // Implementa��o do m�todo Interact da interface
+    public virtual void Interact() // Implementação do método Interact da interface
     {
-        if (isInteracting) return; // Se j� estiver interagindo, n�o faz nada
+        if (isInteracting) return;
         CheckState();
-        isInteracting = true; // Inicia a primeira sequ�ncia de di�logo
-        InteractionCollider.enabled = false; // Desativa o collider de intera����o durante o di�logo
+        isInteracting = true; // Inicia a primeira sequência de diálogo
+        InteractionCollider.enabled = false; // Desativa o collider de interação durante o diá  logo
         HideInteractionUI();
     }
 
@@ -50,13 +51,14 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
                 if (Camera.main.GetComponent<BinocularController>().HasBinoculars)
                 {
                     CurrentState = CaronteState.HASBINOCULARS;
+                    CheckState();
                     return;
                 }       
                 Dialogues["NoBinocularsDialogue"].StartDialogue();
                 return;
             case CaronteState.HASBINOCULARS:
+                Debug.Log("Iniciando diálogo com binóculos");
                 Dialogues["HasBinocularsDialogue"].StartDialogue();
-                CurrentState = CaronteState.ONSHIFT;
                 return;
             case CaronteState.ONSHIFT:
                 Dialogues["ShiftDialogue"].StartDialogue();
@@ -74,6 +76,9 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
         isInteracting = false;
         InteractionCollider.enabled = true; // Reativa o collider de interação após o diálogo
         ShowInteractionUI();
+        
+        if (CurrentState == CaronteState.HASBINOCULARS){ Manager.Instance.StartShift(); return; }
+        else if (CurrentState == CaronteState.ENDSHIFT){ Lift.OpenDoors(); return; }
     }
 
     public virtual void ShowInteractionUI() // Implementação do método ShowInteractionUI da interface

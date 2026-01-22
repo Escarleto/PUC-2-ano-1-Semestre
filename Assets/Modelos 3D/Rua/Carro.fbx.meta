@@ -3,7 +3,17 @@ guid: 1d60d8ff2c2fc01468b77adad2f8bc2f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: carro sem rodas lol
+    second: {fileID: 2100000, guid: d4955a247ba18c742a985292389e0dcc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rodas
+    second: {fileID: 2100000, guid: aa9177244f6d42847b6b23466c3cf397, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

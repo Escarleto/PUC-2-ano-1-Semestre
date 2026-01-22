@@ -32,7 +32,7 @@ public class LiftManager : MonoBehaviour
         }
     }
 
-    private void OpenDoors() //Aqui abrimos as portas do elevador
+    public void OpenDoors() //Aqui abrimos as portas do elevador
     {
         LiftAnimator.SetTrigger("OpenGate");
         LiftAnimator.GetBehaviour<DisableCollision>().DoorCollision = DoorCollision;

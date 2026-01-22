@@ -3,7 +3,17 @@ guid: 128446ab2e4ef274cb918f080231ee24
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ponte de luz
+    second: {fileID: 2100000, guid: b3a2769dc904e34408f659a85cc95dfd, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: poste
+    second: {fileID: 2800000, guid: 432f0a577227f1d45b7a7946af20592d, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
