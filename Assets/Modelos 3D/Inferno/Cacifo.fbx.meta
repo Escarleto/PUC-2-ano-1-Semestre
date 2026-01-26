@@ -3,7 +3,17 @@ guid: a7ab09068f9b27040952cc0a4c8f6baf
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cacifo
+    second: {fileID: 2100000, guid: 50fa04cabb6474b4da7024ce31b799e4, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cacifo
+    second: {fileID: 2800000, guid: 8e3922b56c7303b469dd616e39e14359, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

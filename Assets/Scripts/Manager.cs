@@ -7,8 +7,10 @@ public class Manager : MonoBehaviour
 
     public int TotalDeadPeople = 0;
     private float Salario;
+    public float ShiftTime = 300f; // Duração do turno em segundos (5 minutos)
 
     public CaronteDialogues Caronte;
+    public TimerVisual ClockUI;
 
     private void Awake()
     {
@@ -40,18 +42,22 @@ public class Manager : MonoBehaviour
     {
         Debug.Log("Shift Started");
         Caronte.CurrentState = CaronteDialogues.CaronteState.ONSHIFT;
+        ClockUI.MoveTimer(267f, 169f);
+        ClockUI.OnShift = true;
         StartCoroutine(ShiftDuration());
     }
 
     public void EndShift()
     {
         Debug.Log("Shift Ended");
+        ClockUI.OnShift = false;
+        ClockUI.MoveTimer(169f, 267f);
         Caronte.CurrentState = CaronteDialogues.CaronteState.ENDSHIFT;
     }
 
     private IEnumerator ShiftDuration()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(ShiftTime);
         EndShift();
     }
 }

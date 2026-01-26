@@ -292,6 +292,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ae2fb3af-640c-4a77-821c-f7a478411895
     m_ActionName: 'Player/Shoot[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fdba3f36-4968-4cd7-853f-22cb974d5adb
+    m_ActionName: 'Player/Pause[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -364,6 +368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OriginalFOV: 75
   HasBinoculars: 0
+  Crosshair: {fileID: 0}
   InteractableLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -507,7 +512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35959eccb93966342b50656529ea1d18, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.169
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35959eccb93966342b50656529ea1d18, type: 3}
       propertyPath: m_LocalRotation.w

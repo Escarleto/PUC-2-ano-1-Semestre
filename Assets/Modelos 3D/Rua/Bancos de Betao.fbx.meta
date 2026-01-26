@@ -3,7 +3,17 @@ guid: 1f67e2405269b874b863f094e951bde8
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banco
+    second: {fileID: 2100000, guid: b63923580a71c9c4a958d459a56fdf9f, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: betao
+    second: {fileID: 2800000, guid: 21dc3a2fbe1c0b54fac44b7eef3991cf, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

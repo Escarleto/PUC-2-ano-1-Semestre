@@ -3,7 +3,17 @@ guid: a2dea0e02143bf74eb6eb220152ee67a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hidrante
+    second: {fileID: 2100000, guid: 8752c3d7c3b854540a73073781a347e7, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Hidrante.aseprite
+    second: {fileID: 2800000, guid: 1a4c958bbc3901f4bbec98970b0e62ea, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

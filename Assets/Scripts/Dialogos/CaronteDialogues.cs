@@ -7,7 +7,7 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
     public LiftManager Lift;
     public bool isInteracting = false;
     public GameObject InteractUI;
-    public enum CaronteState{INTRO, NOBINOCULARS, HASBINOCULARS, ONSHIFT, ENDSHIFT}
+    public enum CaronteState { INTRO, NOBINOCULARS, HASBINOCULARS, ONSHIFT, ENDSHIFT }
     public CaronteState CurrentState = CaronteState.INTRO;
     private Dictionary<string, DialogueSequencer> Dialogues;
 
@@ -44,8 +44,6 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
         {
             case CaronteState.INTRO:
                 Dialogues["IntroDialogue"].StartDialogue();
-                if (Camera.main.GetComponent<BinocularController>().HasBinoculars) CurrentState = CaronteState.HASBINOCULARS;
-                else CurrentState = CaronteState.NOBINOCULARS;
                 return;
             case CaronteState.NOBINOCULARS:
                 if (Camera.main.GetComponent<BinocularController>().HasBinoculars)
@@ -53,7 +51,7 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
                     CurrentState = CaronteState.HASBINOCULARS;
                     CheckState();
                     return;
-                }       
+                }
                 Dialogues["NoBinocularsDialogue"].StartDialogue();
                 return;
             case CaronteState.HASBINOCULARS:
@@ -76,14 +74,25 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
         isInteracting = false;
         InteractionCollider.enabled = true; // Reativa o collider de interação após o diálogo
         ShowInteractionUI();
-        
-        if (CurrentState == CaronteState.HASBINOCULARS){ Manager.Instance.StartShift(); return; }
-        else if (CurrentState == CaronteState.ENDSHIFT){ Lift.OpenDoors(); return; }
+
+        switch (CurrentState)
+        {
+            case CaronteState.INTRO:
+                if (Camera.main.GetComponent<BinocularController>().HasBinoculars) CurrentState = CaronteState.HASBINOCULARS;
+                else CurrentState = CaronteState.NOBINOCULARS;
+                return;
+            case CaronteState.HASBINOCULARS:
+                Manager.Instance.StartShift();
+                return;
+            case CaronteState.ENDSHIFT:
+                Lift.OpenDoors();
+                break;
+        }
     }
 
     public virtual void ShowInteractionUI() // Implementação do método ShowInteractionUI da interface
     {
-        if (InteractUI.activeSelf || isInteracting == true) return;// Se a UI j� estiver ativa, n�o faz nada
+        if (InteractUI.activeSelf || isInteracting == true) return;// Se a UI já estiver ativa, não faz nada
         InteractUI.SetActive(true);
     }
 

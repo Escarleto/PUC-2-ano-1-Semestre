@@ -3,7 +3,37 @@ guid: e76ceddb2bbb12447a4c7541cdefbbea
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: maquina
+    second: {fileID: 2100000, guid: fe60ea1abae9b8d43b5f548163169e6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pagamento ora pois
+    second: {fileID: 2100000, guid: 8b88444c087cea745ad514000175d586, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vidro
+    second: {fileID: 2100000, guid: f6f4ff1eeba9c2740b1000257fe92239, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: maquina
+    second: {fileID: 2800000, guid: d3b392edd99328941a5213c03793051b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: maquina2
+    second: {fileID: 2800000, guid: a78fc406500ab7e4382a95c02c567b85, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: vidro
+    second: {fileID: 2800000, guid: da350d9a130a6d147a57bd55446327f6, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
