@@ -5,7 +5,7 @@ public class LiftManager : MonoBehaviour
     private BoxCollider LiftTrigger;
     public BoxCollider DoorCollision;
     private Animator LiftAnimator;
-    public bool OpenDoorOnStart;
+    [SerializeField] private bool OpenDoorOnStart;
     public enum Floor {SURFACE, HELL}
     private Floor CurrentFloor = Floor.SURFACE;
 

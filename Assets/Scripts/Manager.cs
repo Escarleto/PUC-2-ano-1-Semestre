@@ -11,6 +11,7 @@ public class Manager : MonoBehaviour
 
     public CaronteDialogues Caronte;
     public TimerVisual ClockUI;
+    public KidsBehaviour Kids;
 
     private void Awake()
     {
@@ -40,16 +41,15 @@ public class Manager : MonoBehaviour
 
     public void StartShift()
     {
-        Debug.Log("Shift Started");
-        Caronte.CurrentState = CaronteDialogues.CaronteState.ONSHIFT;
         ClockUI.MoveTimer(267f, 169f);
         ClockUI.OnShift = true;
+        Caronte.CurrentState = CaronteDialogues.CaronteState.ONSHIFT;
+        Kids.StartCoroutine(Kids.KidsCycle());
         StartCoroutine(ShiftDuration());
     }
 
     public void EndShift()
     {
-        Debug.Log("Shift Ended");
         ClockUI.OnShift = false;
         ClockUI.MoveTimer(169f, 267f);
         Caronte.CurrentState = CaronteDialogues.CaronteState.ENDSHIFT;

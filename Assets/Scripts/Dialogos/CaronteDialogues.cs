@@ -55,7 +55,6 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
                 Dialogues["NoBinocularsDialogue"].StartDialogue();
                 return;
             case CaronteState.HASBINOCULARS:
-                Debug.Log("Iniciando diálogo com binóculos");
                 Dialogues["HasBinocularsDialogue"].StartDialogue();
                 return;
             case CaronteState.ONSHIFT:

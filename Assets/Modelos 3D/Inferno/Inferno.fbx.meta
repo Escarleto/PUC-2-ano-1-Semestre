@@ -3,7 +3,37 @@ guid: 19196167016bc21439bea998866f185d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Ch\xE3o"
+    second: {fileID: 2100000, guid: 81110fa0a579f664d8b86678a1e1c961, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Machines
+    second: {fileID: 2100000, guid: 0fccc04f5469e4e42b8d21d886a4db8a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 5042a78145519aa45af78d8caad25b56, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paredes
+    second: {fileID: 2100000, guid: e6441b8c4d3a6444f8ac9f62c6cfd991, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Predio
+    second: {fileID: 2100000, guid: edd638f2a3c331344bd35b27b16f1c0c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tapete
+    second: {fileID: 2100000, guid: 961d56eb2d381ed4d81eada75af7b7c3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
