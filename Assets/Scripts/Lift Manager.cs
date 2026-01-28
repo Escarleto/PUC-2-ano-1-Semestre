@@ -5,6 +5,7 @@ public class LiftManager : MonoBehaviour
     private BoxCollider LiftTrigger;
     public BoxCollider DoorCollision;
     private Animator LiftAnimator;
+    private AudioSource ElevatorMusic;
     [SerializeField] private bool OpenDoorOnStart;
     public enum Floor {SURFACE, HELL}
     private Floor CurrentFloor = Floor.SURFACE;
@@ -13,6 +14,7 @@ public class LiftManager : MonoBehaviour
     {
         LiftTrigger = GetComponent<BoxCollider>();
         LiftAnimator = GetComponent<Animator>();
+        ElevatorMusic = GetComponent<AudioSource>();
         LiftTrigger.size = new Vector3(3.11f, 1f, 0.95f); // Define o comprimento do collider do elevador
         if (OpenDoorOnStart) OpenDoors();
     }
@@ -31,6 +33,8 @@ public class LiftManager : MonoBehaviour
                 break;
         }
     }
+
+    public void PlayElevatorMusic() { ElevatorMusic.Play(); }
 
     public void OpenDoors() //Aqui abrimos as portas do elevador
     {

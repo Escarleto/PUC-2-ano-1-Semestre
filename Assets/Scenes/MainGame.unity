@@ -16855,9 +16855,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: d43fcf2266cd1f54fb216be5e4aeaa8f, type: 2}
   - {fileID: 2100000, guid: edd638f2a3c331344bd35b27b16f1c0c, type: 2}
-  - {fileID: 2100000, guid: edd638f2a3c331344bd35b27b16f1c0c, type: 2}
-  - {fileID: 2100000, guid: 0fccc04f5469e4e42b8d21d886a4db8a, type: 2}
+  - {fileID: 2100000, guid: 58b245e801c99094a850c39c248a5f94, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20101,6 +20101,7 @@ GameObject:
   - component: {fileID: 980552892}
   - component: {fileID: 980552893}
   - component: {fileID: 980552891}
+  - component: {fileID: 980552894}
   m_Layer: 0
   m_Name: Lift
   m_TagString: Untagged
@@ -20117,7 +20118,7 @@ Transform:
   m_GameObject: {fileID: 980552889}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.72, y: -0.07, z: 22.3}
+  m_LocalPosition: {x: -0.72, y: 0, z: 22.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20160,7 +20161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoorCollision: {fileID: 562792227}
-  OpenDoorOnStart: 0
+  OpenDoorOnStart: 1
 --- !u!95 &980552893
 Animator:
   serializedVersion: 7
@@ -20183,6 +20184,103 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &980552894
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980552889}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: e6369f2626c40e74eae236c66211d4b1, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.818
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 80
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &982124062
 GameObject:
   m_ObjectHideFlags: 0
@@ -52828,6 +52926,14 @@ PrefabInstance:
     - target: {fileID: 2709608409594153537, guid: 70f494cfed74d144887d8db2b8abdcb6, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7146198839112396689, guid: 70f494cfed74d144887d8db2b8abdcb6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7146198839112396689, guid: 70f494cfed74d144887d8db2b8abdcb6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.24
       objectReference: {fileID: 0}
     - target: {fileID: 7901826710584406326, guid: 70f494cfed74d144887d8db2b8abdcb6, type: 3}
       propertyPath: m_StaticShadowCaster

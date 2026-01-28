@@ -7,12 +7,14 @@ public class Manager : MonoBehaviour
     public static Manager Instance;
 
     private HashSet<int> deadIDs = new HashSet<int>();
-    [SerializeField] private float Salario;
+    
+    public float Salario;
     public float ShiftTime = 150f; // Duração do turno em segundos (2m 30s)
 
-    public CaronteDialogues Caronte;
-    public TimerVisual ClockUI;
-    public KidsBehaviour Kids;
+    [SerializeField] private CaronteDialogues Caronte;
+    [SerializeField] private TimerVisual ClockUI;
+    [SerializeField] private KidsBehaviour Kids;
+    private PlayerController Player;
 
     private void Awake()
     {
@@ -25,6 +27,7 @@ public class Manager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        Player = Camera.main.GetComponentInParent<PlayerController>();
         Salario = 50.50f;
 
         var people = FindObjectsByType<AccusablePerson>(FindObjectsSortMode.None);
