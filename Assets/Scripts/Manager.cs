@@ -1,13 +1,14 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
     public static Manager Instance;
 
-    public int TotalDeadPeople = 0;
-    private float Salario;
-    public float ShiftTime = 300f; // Duração do turno em segundos (5 minutos)
+    private HashSet<int> deadIDs = new HashSet<int>();
+    [SerializeField] private float Salario;
+    public float ShiftTime = 150f; // Duração do turno em segundos (2m 30s)
 
     public CaronteDialogues Caronte;
     public TimerVisual ClockUI;
@@ -25,18 +26,14 @@ public class Manager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         Salario = 50.50f;
-    }
 
-    public void AddSalario(float novoSalario)
-    {
-        Salario += novoSalario;
-        Debug.Log("Salario Atual: " + Salario);
+        var people = FindObjectsByType<AccusablePerson>(FindObjectsSortMode.None);
+        ChooseDeadPeople(new List<AccusablePerson>(people)); 
     }
 
     public void ChangeSalario(float ChangeTo)
     {
         Salario += ChangeTo;
-        Debug.Log("Salario Atual: " + Salario);
     }
 
     public void StartShift()
@@ -52,6 +49,7 @@ public class Manager : MonoBehaviour
     {
         ClockUI.OnShift = false;
         ClockUI.MoveTimer(169f, 267f);
+        Kids.StopCycle();
         Caronte.CurrentState = CaronteDialogues.CaronteState.ENDSHIFT;
     }
 
@@ -59,5 +57,26 @@ public class Manager : MonoBehaviour
     {
         yield return new WaitForSeconds(ShiftTime);
         EndShift();
+    }
+
+    public void ChooseDeadPeople(List<AccusablePerson> people)
+    {
+        deadIDs.Clear();
+
+        while (deadIDs.Count < 15)
+        {
+            int index = Random.Range(0, people.Count);
+            deadIDs.Add(people[index].GetInstanceID());
+        }
+    }
+
+    public bool IsDead(AccusablePerson person)
+    {
+        return deadIDs.Contains(person.GetInstanceID());
+    }
+
+    public void RemoveDead(AccusablePerson person)
+    {
+        deadIDs.Remove(person.GetInstanceID());
     }
 }

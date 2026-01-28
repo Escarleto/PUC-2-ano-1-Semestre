@@ -54,6 +54,16 @@ public class KidsBehaviour : MonoBehaviour, InteractableBase
         StartCoroutine(KidsCycle());
     }
 
+    public void StopCycle()
+    {
+        if (EggRoutine != null) StopCoroutine(EggRoutine);
+        StopAllCoroutines();
+        KidsAtDoor = false;
+        EggObject.SetActive(false);
+        TrickOrTreatText.SetActive(false);
+        HideInteractionUI();
+    }
+
     public IEnumerator KidsCycle()
     {
         KidsAtDoor = false;

@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Arvore
+    second: {fileID: 2100000, guid: 121485cdb0ea89d41b71bb517b5e74e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material
     second: {fileID: 2100000, guid: 28553a4d62fe2ba4f8c39f6a95a055f6, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: arvore
+    second: {fileID: 2800000, guid: 7b28f79c27b0f4248bd4d369adf2ba55, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
