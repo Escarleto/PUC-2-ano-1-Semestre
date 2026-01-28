@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6873272470182151193
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
+  m_Name: ShadowsMidtonesHighlights
+  m_EditorClassIdentifier: 
+  active: 1
+  shadows:
+    m_OverrideState: 1
+    m_Value: {x: 0.40281773, y: 0, z: 1, w: 1}
+  midtones:
+    m_OverrideState: 1
+    m_Value: {x: 0.964132, y: 0.9983369, z: 1, w: 1}
+  highlights:
+    m_OverrideState: 0
+    m_Value: {x: 0.98189837, y: 0.974461, z: 1, w: 1}
+  shadowsStart:
+    m_OverrideState: 1
+    m_Value: 0.04
+  shadowsEnd:
+    m_OverrideState: 1
+    m_Value: 0.53
+  highlightsStart:
+    m_OverrideState: 0
+    m_Value: 0.77
+  highlightsEnd:
+    m_OverrideState: 0
+    m_Value: 1.03
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Menu Volume
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: 2759049228730055411}
+  - {fileID: -6873272470182151193}
+  - {fileID: 4438457495103043910}
+--- !u!114 &2759049228730055411
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
+  m_Name: ColorAdjustments
+  m_EditorClassIdentifier: 
+  active: 1
+  postExposure:
+    m_OverrideState: 1
+    m_Value: -0.41
+  contrast:
+    m_OverrideState: 1
+    m_Value: 24
+  colorFilter:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.64716977, b: 0.8719178, a: 1}
+  hueShift:
+    m_OverrideState: 0
+    m_Value: -1
+  saturation:
+    m_OverrideState: 1
+    m_Value: 40
+--- !u!114 &4438457495103043910
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
+  m_Name: Vignette
+  m_EditorClassIdentifier: 
+  active: 1
+  color:
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
+  center:
+    m_OverrideState: 0
+    m_Value: {x: 0.5, y: 0.5}
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.347
+  smoothness:
+    m_OverrideState: 1
+    m_Value: 0.329
+  rounded:
+    m_OverrideState: 0
+    m_Value: 0
