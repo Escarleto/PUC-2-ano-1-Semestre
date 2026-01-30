@@ -7,6 +7,7 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
     [SerializeField] private LiftManager Lift;
     public SphereCollider InteractionCollider;
     private Animator HandleAnimation;
+    private bool OpenedLift = false;
 
     public enum CaronteStates { INTRO, NOBINOCULARS, HASBINOCULARS, ONSHIFT, ENDSHIFT }
     public CaronteStates CurrentState = CaronteStates.INTRO;
@@ -102,8 +103,10 @@ public class CaronteDialogues : MonoBehaviour, InteractableBase
                 return;
 
             case CaronteStates.ENDSHIFT:
+                if (OpenedLift == true) return;
+                OpenedLift = true;
                 Lift.OpenDoors();
-                return;
+                break;
         }
     }
 

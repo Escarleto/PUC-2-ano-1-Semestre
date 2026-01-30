@@ -13,7 +13,12 @@ public class ManageButtons : MonoBehaviour
 
     private void Start()
     {
-        Resume();
+        Controls.alpha = 0;
+        Controls.interactable = false;
+        Controls.gameObject.SetActive(false);
+        Settings.alpha = 0;
+        Settings.interactable = false;
+        Settings.gameObject.SetActive(false);
     }
 
     public void StartGame()
@@ -24,7 +29,7 @@ public class ManageButtons : MonoBehaviour
         Main.interactable = false;
     }
 
-    public void ChangeScene() { UnityEngine.SceneManagement.SceneManager.LoadScene("MainGame"); }
+    public void ChangeScene() { UnityEngine.SceneManagement.SceneManager.LoadScene("Cutscene"); }
 
     public void TogglePauseMenu(InputAction.CallbackContext Context)
     {

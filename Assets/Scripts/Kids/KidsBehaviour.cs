@@ -81,7 +81,7 @@ public class KidsBehaviour : MonoBehaviour, InteractableBase
     private IEnumerator EggTimer()
     {
         EggObject.SetActive(true);
-        yield return new WaitForSeconds(6.5f);  
+        yield return new WaitForSeconds(8f);  
         if (KidsAtDoor) ThrowEggs();
     }
 

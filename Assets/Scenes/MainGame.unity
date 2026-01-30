@@ -1352,13 +1352,13 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 0166a2acd848bb846b82a9af1c7dc20b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.449
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 192
+  Priority: 170
   DopplerLevel: 0
   MinDistance: 2.92
   MaxDistance: 6.08313
@@ -15958,7 +15958,7 @@ Transform:
   m_GameObject: {fileID: 332282473}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.945, y: -2.877, z: -4.69}
+  m_LocalPosition: {x: -13.53, y: -2.877, z: -4.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43224,7 +43224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoorCollision: {fileID: 562792227}
-  OpenDoorOnStart: 1
+  OpenDoorOnStart: 0
 --- !u!95 &980552893
 Animator:
   serializedVersion: 7
@@ -54268,7 +54268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5940206476735717666, guid: 8f4fa08ec9c48a44380136dd0fc28cfb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5940206476735717666, guid: 8f4fa08ec9c48a44380136dd0fc28cfb, type: 3}
       propertyPath: m_LocalRotation.x
@@ -54276,7 +54276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5940206476735717666, guid: 8f4fa08ec9c48a44380136dd0fc28cfb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5940206476735717666, guid: 8f4fa08ec9c48a44380136dd0fc28cfb, type: 3}
       propertyPath: m_LocalRotation.z
@@ -54288,7 +54288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5940206476735717666, guid: 8f4fa08ec9c48a44380136dd0fc28cfb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5940206476735717666, guid: 8f4fa08ec9c48a44380136dd0fc28cfb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -57693,7 +57693,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueLines:
   - Speaker: {fileID: 1507887900}
-    Line: Fala porra
+    Line: Bom trabalho, como foi o primeiro dia?
+  - Speaker: {fileID: 1806025692}
+    Line: Cansativo...
+  - Speaker: {fileID: 1507887900}
+    Line: "N\xE3o sei se sobreviver\xE1s a semana toda se j\xE1 est\xE1s exausta. "
+  - Speaker: {fileID: 1806025692}
+    Line: ...
+  - Speaker: {fileID: 1507887900}
+    Line: "Aqui, a tua recompensa. At\xE9 amanh\xE3."
 --- !u!114 &1283221008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61804,13 +61812,13 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 0166a2acd848bb846b82a9af1c7dc20b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.449
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 192
+  Priority: 170
   DopplerLevel: 0
   MinDistance: 2.92
   MaxDistance: 6.08313
@@ -71622,13 +71630,13 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 0166a2acd848bb846b82a9af1c7dc20b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.449
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 192
+  Priority: 170
   DopplerLevel: 0
   MinDistance: 2.92
   MaxDistance: 6.08313
@@ -76175,13 +76183,13 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 0166a2acd848bb846b82a9af1c7dc20b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.449
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 192
+  Priority: 170
   DopplerLevel: 0
   MinDistance: 2.92
   MaxDistance: 6.08313
@@ -108455,7 +108463,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueLines:
   - Speaker: {fileID: 1507887900}
-    Line: "J\xE1 falei fia, vaza"
+    Line: "Eu n\xE3o pago horas extras ao Caronte. "
+  - Speaker: {fileID: 1507887900}
+    Line: "N\xE3o o fa\xE7as esperar..."
 --- !u!1001 &2045523706
 PrefabInstance:
   m_ObjectHideFlags: 0

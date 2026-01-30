@@ -40,6 +40,7 @@ public class Cheque : MonoBehaviour
     public void OnClosed()
     {
         Lift.OpenDoors();
+        Debug.Log("cu");
         Camera.main.GetComponentInParent<PlayerController>().CanMove = true;
         gameObject.SetActive(false);
     }
