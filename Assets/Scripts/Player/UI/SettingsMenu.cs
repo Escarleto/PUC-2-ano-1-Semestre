@@ -4,7 +4,13 @@ using UnityEngine.Rendering.Universal;
 
 public class SettingsMenu : MonoBehaviour
 {
-    public Volume PostProcessing;
+    [SerializeField] private Volume PostProcessing;
+    private CanvasGroup SettingsPanel;
+
+    private void Start()
+    {
+        SettingsPanel = GetComponent<CanvasGroup>();
+    }
 
     public void Windowed(bool isWindowed) 
     {

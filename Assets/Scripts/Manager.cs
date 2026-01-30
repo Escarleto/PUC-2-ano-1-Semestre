@@ -35,7 +35,6 @@ public class Manager : MonoBehaviour
     public void ChangeSalario(float ChangeTo)
     {
         Salario += ChangeTo;
-        Salario = Mathf.Round(2);
         Debug.Log(Salario);
     }
 

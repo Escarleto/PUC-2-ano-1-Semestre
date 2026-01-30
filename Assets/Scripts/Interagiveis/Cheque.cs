@@ -8,7 +8,6 @@ public class Cheque : MonoBehaviour
     [SerializeField] PannochkaDialogue Pannochka;
     [SerializeField] TextMeshProUGUI Money;
     [SerializeField] LiftManager Lift;
-    private bool InputBlocker = false;
 
     private void Start()
     {
@@ -36,18 +35,10 @@ public class Cheque : MonoBehaviour
         else Reaction = "UAU!";
 
         Pannochka.BarkDialogue(Reaction);
-
-        InputBlocker = true;
     }
 
     public void OnClosed()
     {
-        if (InputBlocker == true)
-        {
-            InputBlocker = false;
-            return;
-        }
-
         Lift.OpenDoors();
         Camera.main.GetComponentInParent<PlayerController>().CanMove = true;
         gameObject.SetActive(false);

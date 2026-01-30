@@ -15,6 +15,7 @@ public class CameraController : MonoBehaviour
 
     private void Start() // Aqui inicializamos as variáveis quando o jogo inicia
     {
+        Cursor.lockState = CursorLockMode.Locked;
         Binoculars = GetComponent<BinocularController>();
         CurrentSense = OriginalSense;
     }

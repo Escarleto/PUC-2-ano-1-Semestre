@@ -1,25 +1,24 @@
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ManageButtons : MonoBehaviour
 {
-    private Animator Lift;
+    [SerializeField] private Animator Lift;
     [SerializeField] private CanvasGroup UI;
     [SerializeField] private CanvasGroup Main;
+    [SerializeField] private CanvasGroup Settings;
     [SerializeField] private CanvasGroup Controls;
+    private bool IsPaused = false;
 
     private void Start()
     {
-        Lift = GetComponent<Animator>();
-        Main.alpha = 1;
-        Main.gameObject.SetActive(true);
-        Controls.alpha = 0;
-        Controls.interactable = false;
-        Controls.gameObject.SetActive(false);
+        Resume();
     }
 
     public void StartGame()
     {
+        if (Lift == null) return;
         Lift.SetTrigger("Start");
         UI.DOFade(0f, 1.25f).SetEase(Ease.InOutSine);
         Main.interactable = false;
@@ -27,27 +26,82 @@ public class ManageButtons : MonoBehaviour
 
     public void ChangeScene() { UnityEngine.SceneManagement.SceneManager.LoadScene("MainGame"); }
 
-    public void ControlsPanel(bool ToControls)
-    {   
-        if (ToControls == true)
+    public void TogglePauseMenu(InputAction.CallbackContext Context)
+    {
+        if (Context.performed)
         {
-            Main.DOFade(0f, 1.25f).SetEase(Ease.InOutSine)
-                .OnComplete(() => Main.gameObject.SetActive(false));
-            Main.interactable = false;
+            IsPaused = !IsPaused;
 
-            Controls.gameObject.SetActive(true);
-            Controls.interactable = true;
-            Controls.DOFade(1f, 1.25f).SetEase(Ease.InOutSine)
-                 .OnComplete(() => Controls.interactable = true);
+            if (IsPaused) { Pause(); return; }
+            else { Resume(); return; }
+        }
+    }
+
+    private void Pause()
+    {
+        Main.gameObject.SetActive(true);
+        Main.alpha = 1f;
+        Main.interactable = true;
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void Resume()
+    {
+        Main.gameObject.SetActive(false);
+        Controls.alpha = 0;
+        Controls.interactable = false;
+        Controls.gameObject.SetActive(false);
+        Settings.alpha = 0;
+        Settings.interactable = false;
+        Settings.gameObject.SetActive(false);
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        IsPaused = false;
+    }
+
+    public void ChangePanel(CanvasGroup target)
+    {
+        if (target.gameObject.activeSelf)
+        {
+            target.interactable = false;
+
+            target.DOFade(0f, 1.25f)
+                  .SetEase(Ease.InOutSine)
+                  .SetUpdate(true)
+                  .OnComplete(() =>
+                  {
+                      target.gameObject.SetActive(false);
+                  });
+
+            Main.gameObject.SetActive(true);
+            Main.alpha = 0f;
+
+            Main.DOFade(1f, 1.25f)
+                .SetEase(Ease.InOutSine)
+                .SetUpdate(true)
+                .OnComplete(() => Main.interactable = true);
+
             return;
         }
 
-        Controls.DOFade(0f, 1.25f).SetEase(Ease.InOutSine)
-               .OnComplete(() => Controls.gameObject.SetActive(false));
-        Main.gameObject.SetActive(true);
-        Main.DOFade(1f, 1.25f).SetEase(Ease.InOutSine)
-            .OnComplete(() => Main.interactable = true);
+        Main.interactable = false;
+
+        Main.DOFade(0f, 1.25f)
+            .SetEase(Ease.InOutSine)
+            .SetUpdate(true)
+            .OnComplete(() => Main.gameObject.SetActive(false));
+
+        target.gameObject.SetActive(true);
+        target.alpha = 0f;
+        target.interactable = false;
+
+        target.DOFade(1f, 1.25f)
+            .SetEase(Ease.InOutSine)
+            .SetUpdate(true)
+            .OnComplete(() => target.interactable = true);
     }
+
 
     public void QuitGame() { Application.Quit(); }
 }
