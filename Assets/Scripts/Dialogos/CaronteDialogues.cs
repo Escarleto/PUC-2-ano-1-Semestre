@@ -1,104 +1,128 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class CaronteDialogues : MonoBehaviour, InteractableBase
-{
-    private SphereCollider InteractionCollider;
-    public LiftManager Lift;
-    public bool isInteracting = false;
-    public GameObject InteractUI;
-    public enum CaronteState { INTRO, NOBINOCULARS, HASBINOCULARS, ONSHIFT, ENDSHIFT }
-    public CaronteState CurrentState = CaronteState.INTRO;
-    private Dictionary<string, DialogueSequencer> Dialogues;
+{    
+    [SerializeField] private GameObject InteractUI;
+    [SerializeField] private LiftManager Lift;
+    public SphereCollider InteractionCollider;
+    private Animator HandleAnimation;
 
+    public enum CaronteStates { INTRO, NOBINOCULARS, HASBINOCULARS, ONSHIFT, ENDSHIFT }
+    public CaronteStates CurrentState = CaronteStates.INTRO;
 
-    private void Start()  // Aqui inicializamos as variáveis quando o jogo inicia
+    private Dictionary<CaronteStates, DialogueSequencer> Dialogues;
+    
+    private bool isInteracting;
+
+    private void Awake()
     {
         InteractionCollider = GetComponent<SphereCollider>();
+        HandleAnimation = GetComponentInChildren<Animator>();
 
-        Dialogues = new Dictionary<string, DialogueSequencer>();
-
-        DialogueSequencer[] Sequences = GetComponentsInChildren<DialogueSequencer>(true);
-
-        foreach (DialogueSequencer Sequence in Sequences)
-        {
-            Dialogues.Add(Sequence.name, Sequence);
-            Sequence.OnDialogueEnded += OnDialogueFinished;
-        }
-
+        CacheDialogues();
         HideInteractionUI();
     }
 
-    public virtual void Interact() // Implementação do método Interact da interface
+    private void CacheDialogues()
+    {
+        Dialogues = new Dictionary<CaronteStates, DialogueSequencer>();
+
+        foreach (var Sequence in GetComponentsInChildren<DialogueSequencer>(true))
+        {
+            if (System.Enum.TryParse(Sequence.name.Replace("Dialogue", ""), out CaronteStates State))
+            {
+                Dialogues[State] = Sequence;
+                Sequence.OnDialogueEnded += OnDialogueFinished;
+            }
+        }
+    }
+
+    public virtual void Interact()
     {
         if (isInteracting) return;
-        CheckState();
-        isInteracting = true; // Inicia a primeira sequência de diálogo
-        InteractionCollider.enabled = false; // Desativa o collider de interação durante o diá  logo
+
+        isInteracting = true;
+        InteractionCollider.enabled = false;
         HideInteractionUI();
+
+        StartState();
     }
 
-    private void CheckState()
+    private void StartState()
     {
         switch (CurrentState)
         {
-            case CaronteState.INTRO:
-                Dialogues["IntroDialogue"].StartDialogue();
+            case CaronteStates.INTRO:
+                Dialogues[CaronteStates.INTRO].StartDialogue();
                 return;
-            case CaronteState.NOBINOCULARS:
+
+            case CaronteStates.NOBINOCULARS:
                 if (Camera.main.GetComponent<BinocularController>().HasBinoculars)
                 {
-                    CurrentState = CaronteState.HASBINOCULARS;
-                    CheckState();
+                    CurrentState =CaronteStates.HASBINOCULARS;
+                    StartState();
                     return;
                 }
-                Dialogues["NoBinocularsDialogue"].StartDialogue();
+                Dialogues[CaronteStates.NOBINOCULARS].StartDialogue();
                 return;
-            case CaronteState.HASBINOCULARS:
-                Dialogues["HasBinocularsDialogue"].StartDialogue();
-                return;
-            case CaronteState.ONSHIFT:
-                Dialogues["ShiftDialogue"].StartDialogue();
-                return;
-            case CaronteState.ENDSHIFT:
-                Dialogues["EndShiftDialogue"].StartDialogue();
-                return;
-            default:
-                Debug.LogWarning("Caronte está em um estado inválido.");
+
+            case CaronteStates.HASBINOCULARS:
+            case CaronteStates.ONSHIFT:
+            case CaronteStates.ENDSHIFT:
+                Dialogues[CurrentState].StartDialogue();
                 return;
         }
     }
+
     private void OnDialogueFinished()
     {
         isInteracting = false;
-        InteractionCollider.enabled = true; // Reativa o collider de interação após o diálogo
         ShowInteractionUI();
+        InteractionCollider.enabled = true;
 
+        FinishState();
+    }
+
+    private void FinishState()
+    {
         switch (CurrentState)
         {
-            case CaronteState.INTRO:
-                if (Camera.main.GetComponent<BinocularController>().HasBinoculars) CurrentState = CaronteState.HASBINOCULARS;
-                else CurrentState = CaronteState.NOBINOCULARS;
+            case CaronteStates.INTRO:
+                CurrentState =Camera.main.GetComponent<BinocularController>().HasBinoculars
+                    ? CaronteStates.HASBINOCULARS
+                    : CaronteStates.NOBINOCULARS;
                 return;
-            case CaronteState.HASBINOCULARS:
-                Manager.Instance.StartShift();
+
+            case CaronteStates.HASBINOCULARS:
+                HandleAnimation.SetTrigger("PunchIn");
+                GetComponentInChildren<PunchIn>().InteractionCollider.enabled = true;
+                InteractionCollider.enabled = false;
+                HideInteractionUI();
                 return;
-            case CaronteState.ENDSHIFT:
+
+            case CaronteStates.ENDSHIFT:
                 Lift.OpenDoors();
-                break;
+                return;
         }
     }
 
-    public virtual void ShowInteractionUI() // Implementação do método ShowInteractionUI da interface
+    public void Punchin()
     {
-        if (InteractUI.activeSelf || isInteracting == true) return;// Se a UI já estiver ativa, não faz nada
+        HandleAnimation.SetTrigger("PunchIn");
+        Manager.Instance.StartShift();
+        CurrentState =CaronteStates.ONSHIFT;
+    }
+
+    public virtual void ShowInteractionUI()
+    {
+        if (InteractUI.activeSelf || isInteracting) return;
         InteractUI.SetActive(true);
     }
 
-    public virtual void HideInteractionUI() // Implementa��o do m�todo HideInteractionUI da interface
+    public virtual void HideInteractionUI()
     {
-        if (!InteractUI.activeSelf) return; // Se a UI j� estiver desativada, n�o faz nada
+        if (!InteractUI.activeSelf) return;
         InteractUI.SetActive(false);
     }
 }
-

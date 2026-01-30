@@ -14,7 +14,6 @@ public class Manager : MonoBehaviour
     [SerializeField] private CaronteDialogues Caronte;
     [SerializeField] private TimerVisual ClockUI;
     [SerializeField] private KidsBehaviour Kids;
-    private PlayerController Player;
 
     private void Awake()
     {
@@ -27,7 +26,6 @@ public class Manager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        Player = Camera.main.GetComponentInParent<PlayerController>();
         Salario = 50.50f;
 
         var people = FindObjectsByType<AccusablePerson>(FindObjectsSortMode.None);
@@ -43,7 +41,7 @@ public class Manager : MonoBehaviour
     {
         ClockUI.MoveTimer(267f, 169f);
         ClockUI.OnShift = true;
-        Caronte.CurrentState = CaronteDialogues.CaronteState.ONSHIFT;
+        Caronte.CurrentState = CaronteDialogues.CaronteStates.ONSHIFT;
         Kids.StartCoroutine(Kids.KidsCycle());
         StartCoroutine(ShiftDuration());
     }
@@ -53,7 +51,7 @@ public class Manager : MonoBehaviour
         ClockUI.OnShift = false;
         ClockUI.MoveTimer(169f, 267f);
         Kids.StopCycle();
-        Caronte.CurrentState = CaronteDialogues.CaronteState.ENDSHIFT;
+        Caronte.CurrentState = CaronteDialogues.CaronteStates.ENDSHIFT;
     }
 
     private IEnumerator ShiftDuration()

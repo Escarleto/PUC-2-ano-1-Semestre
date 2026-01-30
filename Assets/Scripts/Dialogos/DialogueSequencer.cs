@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using static DialogueHandler;
 
@@ -35,13 +35,16 @@ public class DialogueSequencer : MonoBehaviour
     }
 
     public void AdvanceDialogue()
-    { 
+    {
         if (!onDialogue) return;
 
         CurrentSpeaker = DialogueLines[CurrentText].Speaker;
 
         if (CurrentSpeaker.isTyping)
+        {
+            CurrentSpeaker.SpeedUpTyping();
             return;
+        }
 
         CurrentText++;
 

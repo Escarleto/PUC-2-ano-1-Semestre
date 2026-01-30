@@ -7,7 +7,9 @@ public class DialogueHandler : MonoBehaviour
     private TextMeshProUGUI TextComponent;
     private AudioSource Voice;
     public bool isTyping = false;
-    private float TypingSpeed = 0.075f;
+    private const float BaseTypingSpeed = 0.075f;
+    private const float FastTypingSpeed = 0f;
+    private float CurrentTypingSpeed = 0.075f;
 
     [System.Serializable]
     public class DialogueLine
@@ -34,9 +36,16 @@ public class DialogueHandler : MonoBehaviour
     {
         if (TextComponent == null || isTyping == true) return; // Se o componente de texto não estiver atribuído ou já estiver digitando, não faz nada
 
+        CurrentTypingSpeed = BaseTypingSpeed;
         StopAllCoroutines(); // Para qualquer efeito de digitação que esteja em andamento
         CleanDialogueBox(); // Limpa a caixa de diálogo antes de iniciar um novo efeito
         StartCoroutine(TypeText(TextToSay));
+    }
+
+    public void SpeedUpTyping()
+    {
+        if (!isTyping) return;
+        CurrentTypingSpeed = FastTypingSpeed;
     }
 
     private IEnumerator TypeText(string TextToSay) // Aqui aplicamos o efeito de digitação
@@ -48,7 +57,7 @@ public class DialogueHandler : MonoBehaviour
             TextComponent.text += Letter; // Adiciona a letra atual ao componente de texto
             Voice.pitch = Random.Range(0.9f, 1f); //Adiciona variação de pitch para o som da voz
             Voice.Play(); // Toca o som da voz para cada letra digitada
-            yield return new WaitForSeconds(TypingSpeed); //Espera um curto período antes de adicionar a próxima letra
+            yield return new WaitForSeconds(CurrentTypingSpeed); //Espera um curto período antes de adicionar a próxima letra
         }
 
         isTyping = false;

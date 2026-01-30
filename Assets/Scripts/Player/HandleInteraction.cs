@@ -4,7 +4,8 @@ using UnityEngine.InputSystem;
 public class HandleInteraction : MonoBehaviour
 {
     private Ray InteractRay;
-    public LayerMask InteractableLayer;
+    [SerializeField] private LayerMask InteractableLayer;
+    [SerializeField] private GameObject ChequeUI;
     private InteractableBase Interactable;
     
     private void Update() //Aqui aplicamos os movimentos a cada frame do jogo
@@ -29,6 +30,12 @@ public class HandleInteraction : MonoBehaviour
         if (DialogueSequencer.ActiveDialogue != null)
         {
             DialogueSequencer.ActiveDialogue.AdvanceDialogue();
+            return;
+        }
+
+        if (ChequeUI.activeSelf == true)
+        {
+            ChequeUI.GetComponent<Cheque>().OnClosed();
             return;
         }
 
