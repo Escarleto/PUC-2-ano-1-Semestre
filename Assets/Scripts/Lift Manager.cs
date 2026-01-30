@@ -7,6 +7,7 @@ public class LiftManager : MonoBehaviour
     private Animator LiftAnimator;
     private AudioSource ElevatorMusic;
     [SerializeField] private bool OpenDoorOnStart;
+   
     public enum Floor {SURFACE, HELL}
     private Floor CurrentFloor = Floor.SURFACE;
 
@@ -52,6 +53,7 @@ public class LiftManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            other.transform.SetParent(transform);
             LiftTrigger.size = new Vector3(3.11f, 1f, 5f);
             CloseDoors();
             ChangeFloor();
@@ -62,6 +64,7 @@ public class LiftManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            other.transform.SetParent(null);
             LiftTrigger.size = new Vector3(3.11f, 1f, 0.95f);
             CloseDoors();
         }

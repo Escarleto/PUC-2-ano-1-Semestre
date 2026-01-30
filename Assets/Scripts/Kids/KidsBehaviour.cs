@@ -51,6 +51,7 @@ public class KidsBehaviour : MonoBehaviour, InteractableBase
             Particle.GetComponent<ParticleSystem>().Play();
             Particle.GetComponent<AudioSource>().Play();
         }
+        Manager.Instance.ChangeSalario(-37.75f);
         StartCoroutine(KidsCycle());
     }
 
@@ -67,7 +68,7 @@ public class KidsBehaviour : MonoBehaviour, InteractableBase
     public IEnumerator KidsCycle()
     {
         KidsAtDoor = false;
-        float waitTime = Random.Range(15f, 40f);
+        float waitTime = Random.Range(15f, 30f);
         yield return new WaitForSeconds(waitTime);
 
         KidsAtDoor = true;
